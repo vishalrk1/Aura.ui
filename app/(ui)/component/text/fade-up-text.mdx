@@ -1,0 +1,83 @@
+---
+title: "Fade Up Text"
+author: 
+  name: "Vishal Karangale"
+  link: "https://x.com/KarangaleVishal"
+  handle: "KarangaleVishal"
+time:
+  created: "2024-11-6T19:24:46.167Z"
+  updated: "2024-11-6T09:56:06.853Z"
+categorization:
+  readingTime: "2"
+---
+
+<Preview>
+<FadeUpTextPreview />
+</Preview>
+
+# Introduction
+The "Fade Up Text" component in React, built with Framer Motion, provides a smooth fade-in effect with upward motion for text elements. This component leverages Framer Motion's animation capabilities to add a subtle yet engaging visual effect, enhancing readability and drawing user attention. When rendered, each text element gradually appears and rises, creating a dynamic and modern UI experience. The component can be customized for delay, duration, and easing, making it versatile for different use cases in applications where a clean, animated text presentation is desired.
+
+# Copy Code
+```tsx
+import { AnimatePresence, motion } from "framer-motion";
+import React, { useEffect, useState } from "react";
+
+const FadeUpText = () => {
+  const texts = ["Aura", "Creative", "Animated"];
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % texts.length);
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="h-8 relative flex items-center justify-center perspective-500">
+      <AnimatePresence mode="popLayout" initial={false}>
+        <motion.span
+          key={texts[currentIndex]}
+          initial={{
+            y: 40,
+            opacity: 0,
+            rotateX: -90,
+            transformOrigin: "50% 100%",
+          }}
+          animate={{
+            y: 0,
+            opacity: 1,
+            rotateX: 0,
+            transformOrigin: "50% 100%",
+          }}
+          exit={{
+            y: -40,
+            opacity: [1, 0.5, 0],
+            rotateX: 90,
+            transformOrigin: "50% 0%",
+            transition: {
+              duration: 0.4,
+              ease: [0.65, 0, 0.35, 1],
+            },
+          }}
+          transition={{
+            duration: 0.4,
+            ease: [0.65, 0, 0.35, 1],
+          }}
+          className="absolute text-white text-4xl font-bold"
+          style={{
+            backfaceVisibility: "hidden",
+          }}
+        >
+          {texts[currentIndex]}
+        </motion.span>
+      </AnimatePresence>
+    </div>
+  );
+};
+
+export default FadeUpText;
+
+```
