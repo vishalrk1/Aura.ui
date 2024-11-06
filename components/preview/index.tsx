@@ -2,6 +2,7 @@
 import { CodeType } from "@/types/component";
 
 import { Check, Copy } from "lucide-react";
+import { useTheme } from "next-themes";
 import { Highlight, themes } from "prism-react-renderer";
 import React, { useState } from "react";
 
@@ -14,6 +15,7 @@ interface PreviewProps extends React.HTMLAttributes<HTMLDivElement> {
 const Preview = ({ component, code, codeblock, ...props }: PreviewProps) => {
   const [activeTab, setActiveTab] = useState<"preview" | "code">("preview");
   const [copied, setCopied] = useState(false);
+  const {theme} = useTheme()
 
   const handleCopy = async () => {
     if (!code?.content) return;
@@ -73,7 +75,7 @@ const Preview = ({ component, code, codeblock, ...props }: PreviewProps) => {
               )}
             </button>
             <Highlight
-              theme={themes.dracula}
+              theme={theme === "dark" ? themes.vsDark : themes.github}
               code={code?.content.trim() || "// No code available"}
               language={code?.language || "tsx"}
             >

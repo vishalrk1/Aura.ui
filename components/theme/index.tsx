@@ -50,7 +50,7 @@ export const AppThemeProvider = ({
   children: React.ReactNode;
 }) => {
   return (
-    <ThemeProvider enableSystem={true} attribute="class" storageKey="theme" defaultTheme="system">
+    <ThemeProvider enableSystem={true} attribute="class" storageKey="theme" defaultTheme="dark">
       {children}
     </ThemeProvider>
   );

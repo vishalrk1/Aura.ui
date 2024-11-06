@@ -17,37 +17,19 @@ import rehypeStringify from "rehype-stringify";
 import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 
-import FadeUpText from "./components/displayComponents/Text/FadeUpText";
 import GradientButton from "./components/displayComponents/Button/GradientButton";
 import ReadMoreButton from "./components/displayComponents/Button/ReadMoreButton";
 import {
   FadeUpTextPreview,
   VoteButtonExample,
 } from "./components/displayComponents/Text/Fadeup/example";
-import ComponentPreview, {
-  ComponentPreviewProps,
-} from "./components/preview-component/componentPreview";
 import FigCaption from "./components/figcaption";
+import { PropsTable } from "./components/propsTable";
 
 type FigCaptionProps = React.ComponentProps<typeof FigCaption>;
+type PropsTableProps = React.ComponentProps<typeof PropsTable>;
 
 const components: MDXComponents = {
-  PreviewExample: () => {
-    return (
-      <div className="min- flex h-10 w-32 items-center justify-center rounded-lg border border-yellow-6 bg-yellow-3 text-yellow-11">
-        <div className="overflow-x-auto">
-          <div className="min-w-full">
-            <div className="min-w-full">
-              <div className="min-w-full">Showcase</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  },
-  ComponentPreview: (props: ComponentPreviewProps) => (
-    <ComponentPreview {...props} />
-  ),
   Preview: ({ component, code, codeblock }) => (
     <Preview
       codeblock={codeblock ? codeblock : undefined}
@@ -59,12 +41,13 @@ const components: MDXComponents = {
     <MDXImage {...props} caption={caption} alt={alt} />
   ),
   figcaption: (props: FigCaptionProps) => <FigCaption {...props} />,
+  PropsTable: (props: PropsTableProps) => <PropsTable {...props} />,
   h1: ({ children, id }: React.HTMLAttributes<HTMLHeadingElement>) => {
     if (id?.includes("footnote-label")) {
       return null;
     }
     return (
-      <h1 style={{ fontSize: "18px" }} id={id}>
+      <h1 style={{ fontSize: "20px" }} id={id}>
         {children}
       </h1>
     );
@@ -73,7 +56,7 @@ const components: MDXComponents = {
     if (id?.includes("footnote-label")) {
       return null;
     }
-    return <h2 id={id}>{children}</h2>;
+    return <h2 id={id} style={{ fontSize: "16px" }}>{children}</h2>;
   },
   a: ({ children, href }) => {
     if (href?.startsWith("#user-content-fn-")) {
@@ -201,18 +184,22 @@ const components: MDXComponents = {
     return <li className={cn("mt-2 ml-2 list-item", className)}>{children}</li>;
   },
 
-  // Text components
-  FadeUpTextPreview: () => {
-    return <FadeUpText />;
-  },
   //Button components preview
   GradientButtonPreview: () => {
-    return <GradientButton className="w-32 h-14" text="AuraUI" startColor="#ff6a38" endColor="#8549df" middleColor="#f73b96"/>;
+    return (
+      <GradientButton
+        className="w-32 h-14"
+        text="AuraUI"
+        startColor="#ff6a38"
+        endColor="#8549df"
+        middleColor="#f73b96"
+      />
+    );6
   },
 
   ReadMoreButtonPreview: () => {
-    return <ReadMoreButton text="Read More"/>;
-  }
+    return <ReadMoreButton text="Read More" />;
+  },
 
   FadeUpTextPreview: FadeUpTextPreview,
   VoteButtonExample: VoteButtonExample,

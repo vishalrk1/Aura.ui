@@ -1,13 +1,9 @@
-import { Footer } from "@/components/footer";
 import HomeCategory from "@/components/home-category/HomeCategory";
 import * as FadeIn from "@/components/motion/staggers/fade";
-
-import { getComponentArticles } from "@/lib/mdx";
 
 const Spacer = () => <div style={{ marginTop: "24px" }} />;
 
 export default function Home() {
-  const componentArticles = getComponentArticles('text');
   return (
     <FadeIn.Container>
       <div className="flex items-center justify-between">
@@ -33,9 +29,6 @@ export default function Home() {
         <HomeCategory />
       </FadeIn.Item>
       <Spacer />
-      <FadeIn.Item>
-        <Footer />
-      </FadeIn.Item>
     </FadeIn.Container>
   );
 }

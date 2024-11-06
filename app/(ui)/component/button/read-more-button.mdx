@@ -8,6 +8,72 @@ time:
   created: "2024-11-6T19:24:46.167Z"
   updated: "2024-11-6T09:56:06.853Z"
 ---
-<Preview>
-<ReadMoreButtonPreview/>
-</Preview>
+
+<Preview 
+  component={<ReadMoreButtonPreview />}
+  code={{
+  title: "ReadMoreButton.tsx",
+  language: "tsx",
+  content: `
+  import { ChevronRight } from "lucide-react";
+  import React from "react";
+
+  interface ButtonProps {
+    text: string;
+    onClick: () => void;
+  }
+
+  const ReadMoreButton: React.FC<ButtonProps> = ({ text, onClick }) => {
+    return (
+      <button onClick={onClick} className="group flex items-center text-xl gap-1">
+        <span>{text}</span>
+        <ChevronRight className="transition-all duration-10 group-hover:translate-x-2 ease-in" />
+      </button>
+    );
+  };
+
+  export default ReadMoreButton;
+  `,
+}}
+/>
+
+# Base code
+> Copy and pase the following base component in your project\
+> Make sure to install all the required dependencies
+
+```tsx title="basic.tsx" showLineNumbers=true
+  import React from "react";
+
+  interface ButtonProps {
+    text: string;
+    onClick: () => void;
+  }
+
+  const ReadMoreButton: React.FC<ButtonProps> = ({ text, onClick }) => {
+    return (
+      <button onClick={onClick} className="group flex items-center text-xl gap-1">
+        <span>{text}</span>
+        <ChevronRight className="transition-all duration-10 group-hover:translate-x-2 ease-in" />
+      </button>
+    );
+  };
+
+  export default ReadMoreButton;
+```
+
+# Component Props
+<div style={{marginTop: "2px", marginBottom: "4px"}}/>
+
+<PropsTable data={[
+  {
+    name: "text",
+    type: "string"
+  },
+  {
+    name: "onClick",
+    type: "functional",
+    default: `() => void`
+  },
+]}
+/>
+

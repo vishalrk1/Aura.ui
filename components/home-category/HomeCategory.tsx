@@ -50,7 +50,7 @@ const HomeCategory: React.FC<HomeCategory> = ({ }) => {
     <div className="mt-6 flex flex-col">
       <div className="flex items-center justify-start w-full gap-4 cursor-pointer">
         {HomeRoutes.map((post) => (
-          <NextViewTransition href={`/${post.path}`}>
+          <NextViewTransition key={post.path} href={`/${post.path}`}>
             <div className="w-[300px] h-[100px] flex flex-col items-start justify-center bg-gray-4 px-3 py-6 rounded-md">
               <h1 className="text-xl">{post.title}</h1>
               <p className="mt-0.5 text-base">{post?.description}</p>

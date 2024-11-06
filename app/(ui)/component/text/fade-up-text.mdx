@@ -19,8 +19,6 @@ categorization:
   content: `
 import { useEffect, useState } from "react";
 import FadeUpText from ".";
-import {motion} from "framer-motion"
-import { twMerge } from "tailwind-merge";
 
   export function FadeUpTextPreview() {
     const texts = ["Aura", "Creative", "Animated"];
@@ -41,6 +39,7 @@ import { twMerge } from "tailwind-merge";
 />
 
 # Base Component
+
 > Copy and pase the following base component in your project\
 > Make sure to install all the required dependencies
 
@@ -98,6 +97,26 @@ const FadeUpText: React.FC<Props> = ({ text, className }) => {
 
 export default FadeUpText;
 ```
+
+# Component Props
+<br />
+## Required Props
+
+<PropsTable data={[
+  {
+    name: "className",
+    type: "string"
+  },
+]}/>
+
+## Optional Props
+
+<PropsTable data={[
+  {
+    name: "className",
+    type: "string"
+  },
+]}/>
 
 # Component Examples
 
