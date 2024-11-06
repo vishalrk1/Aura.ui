@@ -57,3 +57,9 @@ export interface ComponentArticle {
 }
 
 export const ComponentCategories: string[] = ["guide", "text", "button"];
+
+export interface CodeType {
+  title?: string;
+  language?: string;
+  content: string;
+}

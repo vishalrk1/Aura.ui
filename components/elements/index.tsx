@@ -11,7 +11,6 @@ interface PostProps {
 
 export const ComponentElement = ({ category }: PostProps) => {
   const articles: ComponentArticle[] = getComponentArticles();
-  console.log(articles)
   const Seperator = () => <div className="border-border border-t" />;
 
   if (articles.length === 0) {

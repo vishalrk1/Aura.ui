@@ -51,8 +51,6 @@ export default async function Page({ params }: { params: { slug: string } }) {
   if (!article) {
     notFound();
   }
-
-  console.log("Article Data: ",article)
-
+  
   return <ArticleLayout article={article} route={route} />;
 }
