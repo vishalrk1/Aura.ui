@@ -17,6 +17,9 @@ import rehypeStringify from "rehype-stringify";
 import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 
+import FadeUpText from "./components/displayComponents/Text/FadeUpText";
+import GradientButton from "./components/displayComponents/Button/GradientButton";
+import ReadMoreButton from "./components/displayComponents/Button/ReadMoreButton";
 import {
   FadeUpTextPreview,
   VoteButtonExample,
@@ -199,6 +202,18 @@ const components: MDXComponents = {
   },
 
   // Text components
+  FadeUpTextPreview: () => {
+    return <FadeUpText />;
+  },
+  //Button components preview
+  GradientButtonPreview: () => {
+    return <GradientButton className="w-32 h-14" text="AuraUI" startColor="#ff6a38" endColor="#8549df" middleColor="#f73b96"/>;
+  },
+
+  ReadMoreButtonPreview: () => {
+    return <ReadMoreButton text="Read More"/>;
+  }
+
   FadeUpTextPreview: FadeUpTextPreview,
   VoteButtonExample: VoteButtonExample,
 };
