@@ -1,10 +1,7 @@
 "use client";
 
 import { Breadcrumb } from "@/components/breadcrumb";
-import FadeUpText from "@/components/displayComponents/Text/FadeUpText";
-import { ComponentElement } from "@/components/elements";
 import Sidebar from "@/components/sidebar";
-import { getComponentArticles } from "@/lib/mdx";
 import { ComponentArticle } from "@/types/component";
 
 import { useRouter } from "next/navigation";

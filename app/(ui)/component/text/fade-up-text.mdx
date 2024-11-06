@@ -11,73 +11,141 @@ categorization:
   readingTime: "2"
 ---
 
-<Preview>
-<FadeUpTextPreview />
-</Preview>
+<Preview 
+  component={<FadeUpTextPreview />}
+  code={{
+  title: "fadeUpText",
+  language: "tsx",
+  content: `
+import { useEffect, useState } from "react";
+import FadeUpText from ".";
+import {motion} from "framer-motion"
+import { twMerge } from "tailwind-merge";
 
-# Introduction
-The "Fade Up Text" component in React, built with Framer Motion, provides a smooth fade-in effect with upward motion for text elements. This component leverages Framer Motion's animation capabilities to add a subtle yet engaging visual effect, enhancing readability and drawing user attention. When rendered, each text element gradually appears and rises, creating a dynamic and modern UI experience. The component can be customized for delay, duration, and easing, making it versatile for different use cases in applications where a clean, animated text presentation is desired.
+  export function FadeUpTextPreview() {
+    const texts = ["Aura", "Creative", "Animated"];
+    const [currentIndex, setCurrentIndex] = useState(0);
 
-# Copy Code
-```tsx
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % texts.length);
+      }, 1000 * 2);
+
+      return () => clearInterval(interval);
+    }, []);
+    
+    return <FadeUpText text={texts[currentIndex]} className="md:text-4xl" />;
+  }  
+  `,
+}}
+/>
+
+# Base Component
+> Copy and pase the following base component in your project\
+> Make sure to install all the required dependencies
+
+```tsx title="basic.tsx" showLineNumbers=true
 import { AnimatePresence, motion } from "framer-motion";
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { twMerge } from "tailwind-merge";
 
-const FadeUpText = () => {
-  const texts = ["Aura", "Creative", "Animated"];
-  const [currentIndex, setCurrentIndex] = useState(0);
+interface Props {
+  text: string;
+  className?: string;
+}
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % texts.length);
-    }, 2000);
-
-    return () => clearInterval(interval);
-  }, []);
-
+const FadeUpText: React.FC<Props> = ({ text, className }) => {
   return (
-    <div className="h-8 relative flex items-center justify-center perspective-500">
-      <AnimatePresence mode="popLayout" initial={false}>
-        <motion.span
-          key={texts[currentIndex]}
-          initial={{
-            y: 40,
-            opacity: 0,
-            rotateX: -90,
-            transformOrigin: "50% 100%",
-          }}
-          animate={{
-            y: 0,
-            opacity: 1,
-            rotateX: 0,
-            transformOrigin: "50% 100%",
-          }}
-          exit={{
-            y: -40,
-            opacity: [1, 0.5, 0],
-            rotateX: 90,
-            transformOrigin: "50% 0%",
-            transition: {
-              duration: 0.4,
-              ease: [0.65, 0, 0.35, 1],
-            },
-          }}
-          transition={{
+    <AnimatePresence mode="popLayout" initial={false}>
+      <motion.span
+        key={text} 
+        initial={{
+          y: 40,
+          opacity: 0,
+          rotateX: -90,
+          transformOrigin: "50% 100%",
+        }}
+        animate={{
+          y: 0,
+          opacity: 1,
+          rotateX: 0,
+          transformOrigin: "50% 100%",
+        }}
+        exit={{
+          y: -40,
+          opacity: [1, 0.5, 0],
+          rotateX: 90,
+          transformOrigin: "50% 0%",
+          transition: {
             duration: 0.4,
             ease: [0.65, 0, 0.35, 1],
-          }}
-          className="absolute text-white text-4xl font-bold"
-          style={{
-            backfaceVisibility: "hidden",
-          }}
-        >
-          {texts[currentIndex]}
-        </motion.span>
-      </AnimatePresence>
-    </div>
+          },
+        }}
+        transition={{
+          duration: 0.4,
+          ease: [0.65, 0, 0.35, 1],
+        }}
+        className={twMerge("text-white text-base font-bold", className)}
+        style={{
+          backfaceVisibility: "hidden",
+        }}
+      >
+        {text}
+      </motion.span>
+    </AnimatePresence>
   );
 };
 
 export default FadeUpText;
-
 ```
+
+# Component Examples
+
+<Preview 
+  component={<VoteButtonExample />}
+  code={{
+  title: "Animated Voting button",
+  language: "tsx",
+  content: `
+  export function VoteButtonExample() {
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+
+    const handleVote = () => {
+      if (!isSubmitted) {
+        setIsLoading(true);
+        setTimeout(() => {
+          setIsSubmitted(true);
+          setIsLoading(false);
+        }, 2000);
+      }
+    };
+
+    const getButtonText = () => {
+      if (isSubmitted) return "Vote Submitted!";
+      if (isLoading) return "Loading...";
+      return "Submit your vote";
+    };
+
+    return (
+      <motion.button
+        onClick={handleVote}
+        disabled={isLoading || isSubmitted}
+        className={twMerge(
+          "w-1/2 relative h-12 rounded-md shadow-sm overflow-hidden transition-all duration-300",
+          isSubmitted
+            ? "bg-green-500/50"
+            : isLoading
+              ? "bg-black-a4"
+              : "bg-black-a4 hover:bg-black-a8",
+        )}
+      >
+        <div className="absolute inset-0 flex items-center justify-center">
+          <FadeUpText text={getButtonText()} />
+        </div>
+      </motion.button>
+    );
+  }
+`
+}}
+/>

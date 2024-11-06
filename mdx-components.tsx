@@ -1,6 +1,5 @@
 import type { MDXComponents } from "mdx/types";
 import type { MDXRemoteProps } from "next-mdx-remote/rsc";
-import type { PluggableList } from "unified";
 
 import FootnoteBackReference from "@/components/footnote/back-reference";
 import FootnoteForwardReference from "@/components/footnote/forward-reference";
@@ -9,13 +8,25 @@ import Link from "@/components/link";
 import Preview from "@/components/preview";
 import { cn } from "@/lib/cn";
 
+import { MDXProvider } from "@mdx-js/react";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import React, { Children } from "react";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
+import rehypeStringify from "rehype-stringify";
 import remarkGfm from "remark-gfm";
+import remarkParse from "remark-parse";
 
-import FadeUpText from "./components/displayComponents/Text/FadeUpText";
+import {
+  FadeUpTextPreview,
+  VoteButtonExample,
+} from "./components/displayComponents/Text/Fadeup/example";
+import ComponentPreview, {
+  ComponentPreviewProps,
+} from "./components/preview-component/componentPreview";
+import FigCaption from "./components/figcaption";
+
+type FigCaptionProps = React.ComponentProps<typeof FigCaption>;
 
 const components: MDXComponents = {
   PreviewExample: () => {
@@ -31,12 +42,20 @@ const components: MDXComponents = {
       </div>
     );
   },
-  Preview: ({ children, codeblock }) => (
-    <Preview codeblock={codeblock ? codeblock : undefined}>{children}</Preview>
+  ComponentPreview: (props: ComponentPreviewProps) => (
+    <ComponentPreview {...props} />
+  ),
+  Preview: ({ component, code, codeblock }) => (
+    <Preview
+      codeblock={codeblock ? codeblock : undefined}
+      code={code}
+      component={component}
+    ></Preview>
   ),
   Image: ({ caption, alt, ...props }) => (
     <MDXImage {...props} caption={caption} alt={alt} />
   ),
+  figcaption: (props: FigCaptionProps) => <FigCaption {...props} />,
   h1: ({ children, id }: React.HTMLAttributes<HTMLHeadingElement>) => {
     if (id?.includes("footnote-label")) {
       return null;
@@ -180,9 +199,8 @@ const components: MDXComponents = {
   },
 
   // Text components
-  FadeUpTextPreview: () => {
-    return <FadeUpText />;
-  },
+  FadeUpTextPreview: FadeUpTextPreview,
+  VoteButtonExample: VoteButtonExample,
 };
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
@@ -195,15 +213,19 @@ export function MDX(props: JSX.IntrinsicAttributes & MDXRemoteProps) {
   return (
     <MDXRemote
       {...props}
-      components={components}
+      components={
+        components as React.ComponentProps<typeof MDXProvider>["components"]
+      }
       options={{
         mdxOptions: {
           remarkPlugins: [remarkGfm],
           rehypePlugins: [
+            remarkParse,
             rehypeSlug,
             [
               rehypePrettyCode,
               {
+                bypassInlineCode: true,
                 theme: {
                   dark: "github-dark",
                   light: "github-light",
@@ -212,7 +234,8 @@ export function MDX(props: JSX.IntrinsicAttributes & MDXRemoteProps) {
                 defaultLang: "tsx",
               },
             ],
-          ] as PluggableList,
+            rehypeStringify,
+          ],
         },
       }}
     />

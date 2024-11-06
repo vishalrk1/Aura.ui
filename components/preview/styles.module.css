@@ -13,17 +13,59 @@
     border-color: var(--border);
     border-width: 1px;
     border-radius: var(--radius-base);
+    position: relative; /* Added for tab positioning */
+  }
 
-    &[data-with-codeblock="true"] {
-      border-bottom-right-radius: 0;
-      border-bottom-left-radius: 0;
+  .preview[data-with-codeblock="true"] {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
 
-      & + figure {
-        margin-top: 0;
-        border-top-width: 0;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-      }
-    }
+  .preview[data-with-codeblock="true"] + figure {
+    margin-top: 0;
+    border-top-width: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  /* New tab styles */
+  .previewTabs {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    gap: 8px;
+    background: var(--background);
+    padding: 4px;
+    border-radius: var(--radius-base);
+  }
+
+  .previewTab {
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: var(--radius-base);
+    transition: all 0.2s ease;
+  }
+
+  .previewTab[data-active="true"] {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+
+  .previewTab[data-active="false"] {
+    background: var(--muted);
+    color: var(--muted-foreground);
+  }
+
+  .previewTab[data-active="false"]:hover {
+    background: var(--muted-hover);
+  }
+
+  .previewContent {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

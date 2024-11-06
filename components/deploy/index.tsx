@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 export const DeployButton = () => {
-  console.log(DeployLink);
   return (
     <motion.div
       initial={{
