@@ -27,7 +27,7 @@ const Sidebar = ({ onSelectArticle, articles }: SidebarProps) => {
   );
 
   return (
-    <FadeIn.Container className="mr-4 w-[20%] border-r p-4">
+    <FadeIn.Container className="hidden md:block mr-4 w-[20%] border-r p-4">
       {ComponentCategories.map((category) => (
         <FadeIn.Item key={category}>
           <div className="my-4 mb-2">
@@ -40,9 +40,8 @@ const Sidebar = ({ onSelectArticle, articles }: SidebarProps) => {
                   key={article.slug}
                   className={twMerge(
                     "my-0 py-1",
-                    article.slug === slug
-                      ? "rounded-r-md border-white-a12 border-l-2 bg-white-a2 py-2"
-                      : "hover:rounded-md hover:bg-white-a2",
+                    article.slug === slug &&
+                      "rounded-r-md border-white-a12 border-l-2 bg-white-a2 py-2"
                   )}
                   initial={{ opacity: 0.5, scale: 0.95 }}
                   animate={{
