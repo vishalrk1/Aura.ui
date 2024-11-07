@@ -9,6 +9,7 @@ import { OpenGraph } from "@/lib/og";
 
 import clsx from "clsx";
 import { Inter } from "next/font/google";
+import Navbar from "@/components/navbar/Navbar";
 
 export const metadata: Metadata = {
   ...OpenGraph,
@@ -28,7 +29,8 @@ export default function RootLayout({
     <html lang="en" className={clsx(inter.className)} suppressHydrationWarning>
       <body>
         <Providers>
-          <main className="mx-auto min-h-screen max-w-screen-xl overflow-x-hidden px-6 py-24 md:overflow-x-visible ">
+          <Navbar/>
+          <main className="mx-auto min-h-screen max-w-screen-2xl overflow-x-hidden px-6 py-24 md:overflow-x-visible ">
             <article className="article">{children}</article>
           </main>
           <FadeIn.Item>
