@@ -1,10 +1,12 @@
-"use client"
-import { CodeType } from "@/types/component";
+"use client";
+
+import type { CodeType } from "@/types/component";
+import type React from "react";
 
 import { Check, Copy } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Highlight, themes } from "prism-react-renderer";
-import React, { useState } from "react";
+import { useState } from "react";
 
 interface PreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   codeblock?: string;
@@ -15,7 +17,7 @@ interface PreviewProps extends React.HTMLAttributes<HTMLDivElement> {
 const Preview = ({ component, code, codeblock, ...props }: PreviewProps) => {
   const [activeTab, setActiveTab] = useState<"preview" | "code">("preview");
   const [copied, setCopied] = useState(false);
-  const {theme} = useTheme()
+  const { theme } = useTheme();
 
   const handleCopy = async () => {
     if (!code?.content) return;
@@ -26,13 +28,13 @@ const Preview = ({ component, code, codeblock, ...props }: PreviewProps) => {
 
   return (
     <figure
-      className="flex flex-col items-center justify-center w-full min-h-96 p-12 mt-2 border rounded-lg relative"
+      className="relative mt-2 flex min-h-96 w-full flex-col items-center justify-center rounded-lg border p-12"
       data-with-codeblock={false}
       {...props}
     >
-      <div className="absolute top-3 right-3 flex gap-2 bg-background p-1 rounded-lg">
+      <div className="absolute top-3 right-3 flex gap-2 rounded-lg bg-background p-1">
         <button
-          className={`px-3 py-1.5 text-sm rounded-lg transition-all duration-200 ${
+          className={`rounded-lg px-3 py-1.5 text-sm transition-all duration-200 ${
             activeTab === "preview"
               ? "bg-primary text-primary-foreground"
               : "bg-muted text-muted-foreground hover:bg-muted/80"
@@ -42,7 +44,7 @@ const Preview = ({ component, code, codeblock, ...props }: PreviewProps) => {
           Preview
         </button>
         <button
-          className={`px-3 py-1.5 text-sm rounded-lg transition-all duration-200 ${
+          className={`rounded-lg px-3 py-1.5 text-sm transition-all duration-200 ${
             activeTab === "code"
               ? "bg-primary text-primary-foreground"
               : "bg-muted text-muted-foreground hover:bg-muted/80"
@@ -53,11 +55,11 @@ const Preview = ({ component, code, codeblock, ...props }: PreviewProps) => {
         </button>
       </div>
 
-      <div className="w-full h-full flex items-center justify-center">
+      <div className="flex h-full w-full items-center justify-center">
         {activeTab === "preview" ? (
           component
         ) : (
-          <div className="relative w-full h-full">
+          <div className="relative h-full w-full">
             {code?.title && (
               <div className="absolute top-2 left-4 text-base text-muted-foreground capitalize">
                 {code.title}
@@ -65,13 +67,13 @@ const Preview = ({ component, code, codeblock, ...props }: PreviewProps) => {
             )}
             <button
               onClick={handleCopy}
-              className="absolute top-2 right-2 p-2 rounded-lg hover:bg-muted/80 transition-all duration-200"
+              className="absolute top-2 right-2 rounded-lg p-2 transition-all duration-200 hover:bg-muted/80"
               aria-label={copied ? "Copied!" : "Copy code"}
             >
               {copied ? (
-                <Check className="w-4 h-4 text-green-500" />
+                <Check className="h-4 w-4 text-green-500" />
               ) : (
-                <Copy className="w-4 h-4 text-muted-foreground" />
+                <Copy className="h-4 w-4 text-muted-foreground" />
               )}
             </button>
             <Highlight
@@ -81,7 +83,7 @@ const Preview = ({ component, code, codeblock, ...props }: PreviewProps) => {
             >
               {({ className, tokens, getLineProps, getTokenProps }) => (
                 <pre
-                  className={`w-full max-h-[600px] overflow-auto p-4 pt-4 bg-muted/5 rounded-lg ${className}`}
+                  className={`max-h-[600px] w-full overflow-auto rounded-lg bg-muted/5 p-4 pt-4 ${className}`}
                 >
                   {tokens.map((line, i) => (
                     <div
@@ -89,7 +91,7 @@ const Preview = ({ component, code, codeblock, ...props }: PreviewProps) => {
                       style={{ display: "flex" }}
                     >
                       <span
-                        className="text-gray-500 pr-4 select-none"
+                        className="select-none pr-4 text-gray-500"
                         style={{ minWidth: "2em", textAlign: "right" }}
                       >
                         {i + 1}

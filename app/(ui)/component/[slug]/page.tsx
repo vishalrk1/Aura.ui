@@ -1,8 +1,8 @@
+import type { ComponentArticle } from "@/types/component";
+
 import { ArticleLayout } from "@/components/screens/article";
-import { Layout } from "@/components/screens/posts";
 import { getComponentArticles } from "@/lib/mdx";
 import { OpenGraph } from "@/lib/og";
-import { ComponentArticle } from "@/types/component";
 
 import { notFound } from "next/navigation";
 
@@ -51,6 +51,6 @@ export default async function Page({ params }: { params: { slug: string } }) {
   if (!article) {
     notFound();
   }
-  
+
   return <ArticleLayout article={article} route={route} />;
 }

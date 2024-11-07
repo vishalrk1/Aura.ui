@@ -1,8 +1,9 @@
+import type { ComponentArticle } from "@/types/component";
+
 import * as FadeIn from "@/components/motion/staggers/fade";
 import { TableOfContents } from "@/components/on-this-page";
 import { formatter } from "@/lib/formatter";
 import { MDX } from "@/mdx-components";
-import { ComponentArticle } from "@/types/component";
 
 import React from "react";
 
@@ -23,7 +24,7 @@ export const ArticleLayout = ({ article, route }: Props) => {
   const Publishier = () => {
     return (
       <a
-        className="cursor-pointer hover:underline hover:text-white-a11"
+        className="cursor-pointer hover:text-white-a11 hover:underline"
         href={article?.author?.link}
         target="_blank"
         rel="noopener noreferrer"
@@ -39,7 +40,7 @@ export const ArticleLayout = ({ article, route }: Props) => {
         <FadeIn.Item>
           <div className="flex flex-col">
             <div>
-              <h1 className="text-lg md:text-2xl lg:text-4xl font-bold mb-1">
+              <h1 className="mb-1 font-bold text-lg md:text-2xl lg:text-4xl">
                 {article.title}
               </h1>
             </div>

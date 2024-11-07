@@ -1,6 +1,7 @@
+import type { ComponentArticle } from "@/types/component";
 import type { Post } from "@/types/post";
 
-import { ComponentArticle, ComponentCategories } from "@/types/component";
+import { ComponentCategories } from "@/types/component";
 
 import fs from "fs";
 import path from "path";

@@ -1,11 +1,8 @@
-import { formatter } from "@/lib/formatter";
+import type React from "react";
 
 import { Link as NextViewTransition } from "next-view-transitions";
-import React from "react";
 
-interface HomeCategory {
-
-}
+type HomeCategory = {};
 
 interface HomeRoute {
   title: string;
@@ -43,15 +40,15 @@ const HomeRoutes: HomeRoute[] = [
   },
 ];
 
-const HomeCategory: React.FC<HomeCategory> = ({ }) => {
+const HomeCategory: React.FC<HomeCategory> = ({}) => {
   const Seperator = () => <div className="border-border border-t" />;
 
   return (
     <div className="mt-6 flex flex-col">
-      <div className="flex items-center justify-start w-full gap-4 cursor-pointer">
+      <div className="flex w-full cursor-pointer items-center justify-start gap-4">
         {HomeRoutes.map((post) => (
           <NextViewTransition key={post.path} href={`/${post.path}`}>
-            <div className="w-[300px] h-[100px] flex flex-col items-start justify-center bg-gray-4 px-3 py-6 rounded-md">
+            <div className="flex h-[100px] w-[300px] flex-col items-start justify-center rounded-md bg-gray-4 px-3 py-6">
               <h1 className="text-xl">{post.title}</h1>
               <p className="mt-0.5 text-base">{post?.description}</p>
             </div>

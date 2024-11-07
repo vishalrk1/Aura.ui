@@ -1,5 +1,6 @@
+import type React from "react";
+
 import { AnimatePresence, motion } from "framer-motion";
-import React from "react";
 import { twMerge } from "tailwind-merge";
 
 interface Props {
@@ -11,7 +12,7 @@ const FadeUpText: React.FC<Props> = ({ text, className }) => {
   return (
     <AnimatePresence mode="popLayout" initial={false}>
       <motion.span
-        key={text} 
+        key={text}
         initial={{
           y: 40,
           opacity: 0,
@@ -38,7 +39,7 @@ const FadeUpText: React.FC<Props> = ({ text, className }) => {
           duration: 0.4,
           ease: [0.65, 0, 0.35, 1],
         }}
-        className={twMerge("text-white text-base font-bold", className)}
+        className={twMerge("font-bold text-base text-white", className)}
         style={{
           backfaceVisibility: "hidden",
         }}

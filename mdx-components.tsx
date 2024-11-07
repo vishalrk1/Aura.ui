@@ -1,3 +1,4 @@
+import type { MDXProvider } from "@mdx-js/react";
 import type { MDXComponents } from "mdx/types";
 import type { MDXRemoteProps } from "next-mdx-remote/rsc";
 
@@ -8,9 +9,8 @@ import Link from "@/components/link";
 import Preview from "@/components/preview";
 import { cn } from "@/lib/cn";
 
-import { MDXProvider } from "@mdx-js/react";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import React, { Children } from "react";
+import React from "react";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
@@ -35,7 +35,7 @@ const components: MDXComponents = {
       codeblock={codeblock ? codeblock : undefined}
       code={code}
       component={component}
-    ></Preview>
+    />
   ),
   Image: ({ caption, alt, ...props }) => (
     <MDXImage {...props} caption={caption} alt={alt} />
@@ -56,7 +56,11 @@ const components: MDXComponents = {
     if (id?.includes("footnote-label")) {
       return null;
     }
-    return <h2 id={id} style={{ fontSize: "16px" }}>{children}</h2>;
+    return (
+      <h2 id={id} style={{ fontSize: "16px" }}>
+        {children}
+      </h2>
+    );
   },
   a: ({ children, href }) => {
     if (href?.startsWith("#user-content-fn-")) {
@@ -188,13 +192,14 @@ const components: MDXComponents = {
   GradientButtonPreview: () => {
     return (
       <GradientButton
-        className="w-32 h-14"
+        className="h-14 w-32"
         text="AuraUI"
         startColor="#ff6a38"
         endColor="#8549df"
         middleColor="#f73b96"
       />
-    );6
+    );
+    6;
   },
 
   ReadMoreButtonPreview: () => {

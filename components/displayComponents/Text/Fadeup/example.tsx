@@ -1,9 +1,10 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import FadeUpText from ".";
-import {motion} from "framer-motion"
 import { twMerge } from "tailwind-merge";
+
+import FadeUpText from ".";
 
 export function FadeUpTextPreview() {
   const texts = ["Aura", "Creative", "Animated"];
@@ -44,7 +45,7 @@ export function VoteButtonExample() {
       onClick={handleVote}
       disabled={isLoading || isSubmitted}
       className={twMerge(
-        "w-1/2 relative h-12 rounded-md shadow-sm overflow-hidden transition-all duration-300",
+        "relative h-12 w-1/2 overflow-hidden rounded-md shadow-sm transition-all duration-300",
         isSubmitted
           ? "bg-green-500/50"
           : isLoading

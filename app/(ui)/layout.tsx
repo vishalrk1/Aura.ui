@@ -1,8 +1,9 @@
 "use client";
 
+import type { ComponentArticle } from "@/types/component";
+
 import { Breadcrumb } from "@/components/breadcrumb";
 import Sidebar from "@/components/sidebar";
-import { ComponentArticle } from "@/types/component";
 
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -37,9 +38,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <Breadcrumb />
       <div className="flex">
         <Sidebar articles={articles} onSelectArticle={handleSelectArticle} />
-        <main className="flex-grow max-w-[80%] p-4">
-          {children}
-        </main>
+        <main className="max-w-[80%] flex-grow p-4">{children}</main>
       </div>
     </React.Fragment>
   );

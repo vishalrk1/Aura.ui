@@ -1,5 +1,6 @@
+import type React from "react";
+
 import { ChevronRight } from "lucide-react";
-import React from "react";
 
 interface ButtonProps {
   text: string;
@@ -8,9 +9,9 @@ interface ButtonProps {
 
 const ReadMoreButton: React.FC<ButtonProps> = ({ text, onClick }) => {
   return (
-    <button onClick={onClick} className="group flex items-center text-xl gap-1">
+    <button onClick={onClick} className="group flex items-center gap-1 text-xl">
       <span>{text}</span>
-      <ChevronRight className="transition-all duration-10 group-hover:translate-x-2 ease-in" />
+      <ChevronRight className="transition-all duration-10 ease-in group-hover:translate-x-2" />
     </button>
   );
 };

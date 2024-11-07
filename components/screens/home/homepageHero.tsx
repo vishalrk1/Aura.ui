@@ -1,7 +1,5 @@
 import * as FadeIn from "@/components/motion/staggers/fade";
 
-import React from "react";
-
 const Spacer = () => <div style={{ marginTop: "24px" }} />;
 
 const HomepageHero = () => {
@@ -10,7 +8,7 @@ const HomepageHero = () => {
       <FadeIn.Item>
         <div className="flex items-start justify-start">
           <div className="flex flex-col">
-            <h1 className="lg:text-6xl md:text-5xl sm:text-4xl text-3xl xl:text-7xl font-bold">
+            <h1 className="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
               Make you website <br /> looks 100x better <br /> with Aura
             </h1>
           </div>
@@ -23,24 +21,24 @@ const HomepageHero = () => {
           </h2>
         </FadeIn.Item>
       </FadeIn.Item>
-      <div className="w-1/2 h-full ">
+      <div className="h-full w-1/2 ">
         <FadeIn.Item>
-          <div className="w-full h-full flex gap-2 items-center justify-center">
-            <div className="flex flex-1 flex-col gap-2 items-center justify-center h-[400px]">
-              <div className="w-full h-full flex flex-1 items-center justify-center rounded-md">
+          <div className="flex h-full w-full items-center justify-center gap-2">
+            <div className="flex h-[400px] flex-1 flex-col items-center justify-center gap-2">
+              <div className="flex h-full w-full flex-1 items-center justify-center rounded-md">
                 <video
                   src="/framer-card.mp4"
                   loop
                   autoPlay
                   muted
-                  className="w-full h-full object-cover rounded-lg"
+                  className="h-full w-full rounded-lg object-cover"
                 />
               </div>
-              <div className="bg-gray-4 w-full h-full flex flex-1 items-center justify-center rounded-lg">
+              <div className="flex h-full w-full flex-1 items-center justify-center rounded-lg bg-gray-4">
                 video-2
               </div>
             </div>
-            <div className="flex flex-1 flex-col items-center justify-center bg-gray-4 h-[400px] rounded-lg">
+            <div className="flex h-[400px] flex-1 flex-col items-center justify-center rounded-lg bg-gray-4">
               verticle video
             </div>
           </div>

@@ -1,11 +1,12 @@
 "use client";
 
+import type { ComponentArticle } from "@/types/component";
+
 import * as FadeIn from "@/components/motion/staggers/fade";
-import { ComponentArticle, ComponentCategories } from "@/types/component";
+import { ComponentCategories } from "@/types/component";
 
 import { motion } from "framer-motion";
 import { useParams } from "next/navigation";
-import React from "react";
 import { twMerge } from "tailwind-merge";
 
 interface SidebarProps {
@@ -26,11 +27,11 @@ const Sidebar = ({ onSelectArticle, articles }: SidebarProps) => {
   );
 
   return (
-    <FadeIn.Container className="p-4 border-r w-[20%] mr-4">
+    <FadeIn.Container className="mr-4 w-[20%] border-r p-4">
       {ComponentCategories.map((category) => (
         <FadeIn.Item key={category}>
-          <div className="mb-2 my-4">
-            <h1 className="text-lg font-semibold capitalize mx-4">
+          <div className="my-4 mb-2">
+            <h1 className="mx-4 font-semibold text-lg capitalize">
               {category}
             </h1>
             <ul className="my-1 list-none">
@@ -40,8 +41,8 @@ const Sidebar = ({ onSelectArticle, articles }: SidebarProps) => {
                   className={twMerge(
                     "my-0 py-1",
                     article.slug === slug
-                      ? "bg-white-a2 py-2 border-l-2 border-white-a12 rounded-r-md"
-                      : "hover:bg-white-a2 hover:rounded-md",
+                      ? "rounded-r-md border-white-a12 border-l-2 bg-white-a2 py-2"
+                      : "hover:rounded-md hover:bg-white-a2",
                   )}
                   initial={{ opacity: 0.5, scale: 0.95 }}
                   animate={{
@@ -53,10 +54,10 @@ const Sidebar = ({ onSelectArticle, articles }: SidebarProps) => {
                   <h2
                     onClick={() => onSelectArticle(article.slug)}
                     className={twMerge(
-                      "cursor-pointer mx-4 text-black-a6 ",
+                      "mx-4 cursor-pointer text-black-a6 ",
                       article.slug === slug
                         ? "font-semibold text-white-a12"
-                        : "dark:text-white-a6 hover:text-black-a8 dark:hover:text-white-a8",
+                        : "hover:text-black-a8 dark:text-white-a6 dark:hover:text-white-a8",
                     )}
                   >
                     {article.title}

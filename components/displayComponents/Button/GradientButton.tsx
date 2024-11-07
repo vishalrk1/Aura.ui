@@ -1,6 +1,8 @@
 "use client";
-import {motion} from "framer-motion";
-import React from "react";
+
+import type React from "react";
+
+import { motion } from "framer-motion";
 
 interface ButtonProps {
   text: string;
@@ -21,16 +23,16 @@ const GradientButton: React.FC<ButtonProps> = ({
 }) => {
   return (
     <div
-      className={`p-1 rounded-lg ${className}`}
+      className={`rounded-lg p-1 ${className}`}
       style={{
         background: `linear-gradient(to right, ${startColor}${middleColor ? `, ${middleColor}` : ""}, ${endColor})`,
       }}
     >
       <button
         onClick={onClick}
-        className="w-full h-full py-2 px-4 bg-white-a12 text-black-a12 rounded-md dark:bg-black-a12 dark:text-white-a12"
+        className="h-full w-full rounded-md bg-white-a12 px-4 py-2 text-black-a12 dark:bg-black-a12 dark:text-white-a12"
       >
-        <motion.span whileHover={{scale:1.5}} className="">
+        <motion.span whileHover={{ scale: 1.5 }} className="">
           {text}
         </motion.span>
       </button>

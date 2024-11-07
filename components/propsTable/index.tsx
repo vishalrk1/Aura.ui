@@ -31,7 +31,9 @@ export const PropsTable = ({ data }: PropsTableProps) => {
           <tr>
             <th className="px-4 py-3 font-normal text-sm md:text-base">Prop</th>
             <th className="px-4 py-3 font-normal text-sm md:text-base">Type</th>
-            <th className="px-4 py-3 font-normal text-sm md:text-base">Default</th>
+            <th className="px-4 py-3 font-normal text-sm md:text-base">
+              Default
+            </th>
           </tr>
         </thead>
         <tbody>

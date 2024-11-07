@@ -1,6 +1,6 @@
-import { formatter } from "@/lib/formatter";
-import { getComponentArticles, getPosts } from "@/lib/mdx";
-import { ComponentArticle } from "@/types/component";
+import type { ComponentArticle } from "@/types/component";
+
+import { getComponentArticles } from "@/lib/mdx";
 
 import { Link as NextViewTransition } from "next-view-transitions";
 import React from "react";
