@@ -52,5 +52,5 @@ export default async function Page({ params }: { params: { slug: string } }) {
     notFound();
   }
 
-  return <ArticleLayout article={article} route={route} />;
+  return <ArticleLayout article={article} />;
 }

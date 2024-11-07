@@ -35,10 +35,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <React.Fragment>
-      <Breadcrumb />
-      <div className="flex">
-        <Sidebar articles={articles} onSelectArticle={handleSelectArticle} />
-        <main className="max-w-[80%] flex-grow p-4">{children}</main>
+      <div className="mt-16 px-4 lg:px-24">
+        <Breadcrumb />
+        <div className="mx-auto flex min-w-xl">
+          <Sidebar articles={articles} onSelectArticle={handleSelectArticle} />
+          <main className="flex-grow p-4 md:max-w-[80%]">{children}</main>
+        </div>
       </div>
     </React.Fragment>
   );

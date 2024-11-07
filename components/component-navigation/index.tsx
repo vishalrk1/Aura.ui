@@ -1,26 +1,30 @@
 "use client";
 
-import type { Post } from "@/types/post/index";
+import type { ComponentArticle } from "@/types/component";
 
 import { Link } from "next-view-transitions";
 import { usePathname } from "next/navigation";
 
-interface PostNavigationProps {
-  posts: Array<Post>;
+interface ComponentNavigationProps {
+  components: Array<ComponentArticle>;
 }
 
-function PostNavigation({ posts }: PostNavigationProps) {
-  posts.sort((a, b) => {
+function ComponentNavigation({ components }: ComponentNavigationProps) {
+  // Sort components in descending order based on creation time.
+  components.sort((a, b) => {
     return (
       new Date(b.time.created).getTime() - new Date(a.time.created).getTime()
     );
   });
 
   const currentSlug = usePathname().split("/").pop();
-  const currentIndex = posts.findIndex((post) => post.slug === currentSlug);
-  const previous =
-    currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null;
-  const next = currentIndex > 0 ? posts[currentIndex - 1] : null;
+  const currentIndex = components.findIndex(
+    (component) => component.slug === currentSlug,
+  );
+
+  const previous = currentIndex > 0 ? components[currentIndex - 1] : null;
+  const next =
+    currentIndex < components.length - 1 ? components[currentIndex + 1] : null;
 
   if (!previous && !next) {
     return null;
@@ -50,4 +54,4 @@ function PostNavigation({ posts }: PostNavigationProps) {
   );
 }
 
-export { PostNavigation };
+export { ComponentNavigation };

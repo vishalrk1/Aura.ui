@@ -96,7 +96,7 @@ export const TableOfContents = () => {
         className={cn(
           "top-[10rem] right-auto left-[2rem] hidden",
           "xl:top-[6rem] xl:right-[6rem] xl:left-auto xl:block",
-          "fixed mt-0 h-full w-48 justify-start space-y-4 transition",
+          "fixed mt-0 h-max w-48 justify-start space-y-4 transition",
         )}
       >
         <div className="mt-0 flex flex-col gap-0">

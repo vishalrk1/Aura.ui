@@ -23,9 +23,9 @@ import {
   FadeUpTextPreview,
   VoteButtonExample,
 } from "./components/displayComponents/Text/Fadeup/example";
+import GradientText from "./components/displayComponents/Text/GradientText/GradientText";
 import FigCaption from "./components/figcaption";
 import { PropsTable } from "./components/propsTable";
-import GradientText from "./components/displayComponents/Text/GradientText/GradientText";
 
 type FigCaptionProps = React.ComponentProps<typeof FigCaption>;
 type PropsTableProps = React.ComponentProps<typeof PropsTable>;
@@ -200,7 +200,6 @@ const components: MDXComponents = {
         middleColor="#f73b96"
       />
     );
-    6;
   },
 
   ReadMoreButtonPreview: () => {
@@ -211,9 +210,8 @@ const components: MDXComponents = {
   VoteButtonExample: VoteButtonExample,
 
   GradientTextPreview: () => {
-    return <GradientText/>
-  }
-
+    return <GradientText />;
+  },
 };
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {

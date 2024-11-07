@@ -32,8 +32,10 @@ const Preview = ({ component, code, codeblock, ...props }: PreviewProps) => {
       data-with-codeblock={false}
       {...props}
     >
-      <div className="absolute top-3 right-3 flex gap-2 rounded-lg bg-background p-1">
+      {/* Moved the buttons container to the top left */}
+      <div className="absolute top-3 left-3 flex gap-2 rounded-lg bg-background p-1">
         <button
+          type="button"
           className={`rounded-lg px-3 py-1.5 text-sm transition-all duration-200 ${
             activeTab === "preview"
               ? "bg-primary text-primary-foreground"
@@ -44,6 +46,7 @@ const Preview = ({ component, code, codeblock, ...props }: PreviewProps) => {
           Preview
         </button>
         <button
+          type="button"
           className={`rounded-lg px-3 py-1.5 text-sm transition-all duration-200 ${
             activeTab === "code"
               ? "bg-primary text-primary-foreground"
@@ -59,13 +62,14 @@ const Preview = ({ component, code, codeblock, ...props }: PreviewProps) => {
         {activeTab === "preview" ? (
           component
         ) : (
-          <div className="relative h-full w-full">
+          <div className="relative mt-4 h-full w-full">
             {code?.title && (
               <div className="absolute top-2 left-4 text-base text-muted-foreground capitalize">
                 {code.title}
               </div>
             )}
             <button
+              type="button"
               onClick={handleCopy}
               className="absolute top-2 right-2 rounded-lg p-2 transition-all duration-200 hover:bg-muted/80"
               aria-label={copied ? "Copied!" : "Copy code"}
@@ -87,6 +91,7 @@ const Preview = ({ component, code, codeblock, ...props }: PreviewProps) => {
                 >
                   {tokens.map((line, i) => (
                     <div
+                      key={`line-token-${i}`}
                       {...getLineProps({ line, key: i })}
                       style={{ display: "flex" }}
                     >
@@ -98,7 +103,10 @@ const Preview = ({ component, code, codeblock, ...props }: PreviewProps) => {
                       </span>
                       <span>
                         {line.map((token, key) => (
-                          <span {...getTokenProps({ token, key })} />
+                          <span
+                            key={token ? token.content : key}
+                            {...getTokenProps({ token, key })}
+                          />
                         ))}
                       </span>
                     </div>

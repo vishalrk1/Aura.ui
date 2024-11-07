@@ -4,12 +4,12 @@ import type { Metadata } from "next";
 
 import { Footer } from "@/components/footer";
 import * as FadeIn from "@/components/motion/staggers/fade";
+import Navbar from "@/components/navbar/Navbar";
 import { Providers } from "@/components/providers";
 import { OpenGraph } from "@/lib/og";
 
 import clsx from "clsx";
 import { Inter } from "next/font/google";
-import Navbar from "@/components/navbar/Navbar";
 
 export const metadata: Metadata = {
   ...OpenGraph,
@@ -29,7 +29,7 @@ export default function RootLayout({
     <html lang="en" className={clsx(inter.className)} suppressHydrationWarning>
       <body>
         <Providers>
-          <Navbar/>
+          <Navbar />
           <main className="mx-auto min-h-screen overflow-x-hidden md:overflow-x-visible ">
             <article className="article">{children}</article>
           </main>

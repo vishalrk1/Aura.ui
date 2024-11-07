@@ -1,8 +1,4 @@
-import type React from "react";
-
 import { Link as NextViewTransition } from "next-view-transitions";
-
-type HomeCategory = {};
 
 interface HomeRoute {
   title: string;
@@ -40,12 +36,10 @@ const HomeRoutes: HomeRoute[] = [
   },
 ];
 
-const HomeCategory: React.FC<HomeCategory> = ({}) => {
-  const Seperator = () => <div className="border-border border-t" />;
-
+const HomeCategory = () => {
   return (
-    <div className="mt-6 flex flex-col">
-      <div className="flex w-full cursor-pointer items-center justify-start gap-4">
+    <div className="mt-6 flex flex-col px-6 sm:16px xl:px-24">
+      <div className="flex w-full cursor-pointer flex-wrap items-center justify-center gap-4 xl:justify-start">
         {HomeRoutes.map((post) => (
           <NextViewTransition key={post.path} href={`/${post.path}`}>
             <div className="flex h-[100px] w-[300px] flex-col items-start justify-center rounded-md bg-gray-4 px-3 py-6">
