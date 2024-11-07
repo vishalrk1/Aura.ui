@@ -19,6 +19,7 @@ import remarkParse from "remark-parse";
 
 import GradientButton from "./components/displayComponents/Button/GradientButton";
 import ReadMoreButton from "./components/displayComponents/Button/ReadMoreButton";
+import { BottomBorderTabExample } from "./components/displayComponents/Tab/BottomBorderTab/example";
 import {
   FadeUpTextPreview,
   VoteButtonExample,
@@ -212,6 +213,9 @@ const components: MDXComponents = {
   GradientTextPreview: () => {
     return <GradientText />;
   },
+
+  // Tabs
+  BottomBorderTabExample: BottomBorderTabExample,
 };
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
