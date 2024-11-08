@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
@@ -22,5 +23,12 @@ const GradientText: React.FC<TextProps> = ({startColor="#666666", endColor="#fff
     </h1>
   )
 }
+=======
+import React from "react";
 
-export default GradientText
+const GradientText = () => {
+  return <div>GradientText</div>;
+};
+>>>>>>> e72448abccbb3199524f63f14d1c1f3f95ee8b5c
+
+export default GradientText;

@@ -1,7 +1,6 @@
 import type { Post } from "@/types";
 
 import { TableOfContents } from "@/components/on-this-page";
-import { PostNavigation } from "@/components/post-navigation";
 import { formatter } from "@/lib/formatter";
 import { getPosts } from "@/lib/mdx";
 import { MDX } from "@/mdx-components";
@@ -48,7 +47,6 @@ export const Layout = ({ post, route }: Props) => {
       </div>
 
       <MDX source={post.content} />
-      <PostNavigation posts={posts} />
       <TableOfContents />
     </React.Fragment>
   );

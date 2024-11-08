@@ -24,7 +24,7 @@
   */
 
   :root {
-    --bg: var(--gray-1);
+    --bg: white;
     --fg: var(--gray-12);
     --muted: var(--gray-8);
     --border: var(--gray-4);
@@ -40,6 +40,10 @@
     --radius-small: 4px;
     --radius-base: 8px;
     --radius-large: 12px;
+  }
+
+  .dark {
+    --bg: black;
   }
 
   * {

@@ -27,7 +27,7 @@ const Sidebar = ({ onSelectArticle, articles }: SidebarProps) => {
   );
 
   return (
-    <FadeIn.Container className="hidden md:block mr-4 w-[20%] border-r p-4">
+    <FadeIn.Container className="mr-4 hidden w-[30%] md:w-[20%] border-r p-4 md:block">
       {ComponentCategories.map((category) => (
         <FadeIn.Item key={category}>
           <div className="my-4 mb-2">
@@ -41,7 +41,7 @@ const Sidebar = ({ onSelectArticle, articles }: SidebarProps) => {
                   className={twMerge(
                     "my-0 py-1",
                     article.slug === slug &&
-                      "rounded-r-md border-white-a12 border-l-2 bg-white-a2 py-2"
+                      "rounded-r-md border-white-a12 border-l-2 bg-white-a2 py-2",
                   )}
                   initial={{ opacity: 0.5, scale: 0.95 }}
                   animate={{
@@ -50,17 +50,19 @@ const Sidebar = ({ onSelectArticle, articles }: SidebarProps) => {
                   }}
                   transition={{ duration: 0.3 }}
                 >
-                  <h2
-                    onClick={() => onSelectArticle(article.slug)}
-                    className={twMerge(
-                      "mx-4 cursor-pointer text-black-a6 ",
-                      article.slug === slug
-                        ? "font-semibold text-white-a12"
-                        : "hover:text-black-a8 dark:text-white-a6 dark:hover:text-white-a8",
-                    )}
-                  >
-                    {article.title}
-                  </h2>
+                  {/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
+                  <div onClick={() => onSelectArticle(article.slug)}>
+                    <h2
+                      className={twMerge(
+                        "mx-4 cursor-pointer text-black-a6 text-sm lg:text-base",
+                        article.slug === slug
+                          ? "font-semibold text-white-a12"
+                          : "hover:text-black-a8 dark:text-white-a6 dark:hover:text-white-a8",
+                      )}
+                    >
+                      {article.title}
+                    </h2>
+                  </div>
                 </motion.li>
               ))}
             </ul>
