@@ -60,6 +60,11 @@
     background-color: var(--selection-background);
   }
 
+  body {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
   html {
     scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
     scrollbar-gutter: stable;
@@ -88,10 +93,6 @@
 
     sub {
       @apply text-small;
-    }
-
-    a {
-      @apply transition hover:opacity-50;
     }
 
     ol {

@@ -9,6 +9,7 @@ import Link from "@/components/link";
 import Preview from "@/components/preview";
 import { cn } from "@/lib/cn";
 
+import { User } from "lucide-react";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import React from "react";
 import rehypePrettyCode from "rehype-pretty-code";
@@ -18,6 +19,8 @@ import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 
 import GradientButton from "./components/displayComponents/Button/GradientButton";
+import HoverButton from "./components/displayComponents/Button/HoverButton/HoverButton";
+import HoverFillButton from "./components/displayComponents/Button/HoverFillButton/HoverFillButton";
 import ReadMoreButton from "./components/displayComponents/Button/ReadMoreButton";
 import { BottomBorderTabExample } from "./components/displayComponents/Tab/BottomBorderTab/example";
 import {
@@ -202,16 +205,37 @@ const components: MDXComponents = {
       />
     );
   },
-
   ReadMoreButtonPreview: () => {
     return <ReadMoreButton text="Read More" />;
   },
-
   FadeUpTextPreview: FadeUpTextPreview,
   VoteButtonExample: VoteButtonExample,
+  HoverButtonOneExample: () => {
+    return (
+      <HoverButton
+        buttonText="Components"
+        expandText="Start Building"
+        icon="😎"
+      />
+    );
+  },
+  HoverFillButtonExample: () => {
+    return (
+      <HoverFillButton>
+        <User size={20} />
+        Hover here
+      </HoverFillButton>
+    );
+  },
 
   GradientTextPreview: () => {
-    return <GradientText />;
+    return (
+      <GradientText
+        text="Gradient Text"
+        startColor="#666666"
+        endColor="#ffffff"
+      />
+    );
   },
 
   // Tabs

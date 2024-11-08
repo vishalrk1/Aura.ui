@@ -18,3 +18,70 @@ time:
   content:""
 }}
 />
+
+
+# Base Component
+
+> Copy and paste the following base component in your project\
+> Make sure to install all the required dependencies
+
+```tsx showLineNumbers=true title="GradientText.tsx"
+import React from 'react'
+import { twMerge } from 'tailwind-merge'
+
+interface TextProps{
+    startColor : string,
+    endColor : string,
+    text : string,
+    className?: string
+}
+
+const GradientText: React.FC<TextProps> = ({startColor="#666666", endColor="#ffffff", text, className}) => {
+  return (
+    <h1
+      className={twMerge("text-5xl font-bold text-center",className)}
+      style={{
+        backgroundImage: `linear-gradient(to bottom, ${startColor}, ${endColor})`,
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+      }}
+    >
+      {text}
+    </h1>
+  )
+}
+
+export default GradientText
+```
+
+# Component Props
+<br />
+## Required Props
+
+<PropsTable data={[
+  {
+    name: "text",
+    type: "string",
+    default: "Gradient Text",
+  },
+  {
+    name: "startColor",
+    type: "string",
+    default: "#000000",
+  },
+  {
+    name: "endColor",
+    type: "string",
+    default: "#ffffff",
+  }
+
+]}/>
+
+## Optional Props
+
+<PropsTable data={[
+  {
+    name: "className",
+    type: "string"
+  },
+]}/>
