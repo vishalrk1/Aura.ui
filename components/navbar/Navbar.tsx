@@ -1,7 +1,8 @@
 "use client";
 
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
-import React, { useEffect, useState } from "react";
+import { GitHubLogoIcon, HamburgerMenuIcon } from "@radix-ui/react-icons";
+import { useState } from "react";
+import {motion} from "framer-motion";
 
 interface Route {
   name: string;
@@ -26,24 +27,46 @@ const routes: Route[] = [
 ];
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <nav className="fixed w-full top-0 z-50 bg-transparent bg-opacity-40 backdrop-blur-sm bg-white transition-all duration-300">
-      <div className="flex justify-between items-center h-[80px] max-w-screen-xl mx-auto px-8">
-        <a href="/" className="text-4xl font-semibold text-white-a12 hover:text-white-a12">Aura.ui</a>
+    <motion.nav layout className="fixed top-0 w-full overflow-hidden z-50 bg-transparent bg-opacity-40 backdrop-blur-sm bg-white transition-all duration-300">
+      <div className="px-4 flex justify-between items-center h-[40px] md:h-[80px] md:px-32">
+        <a
+          href="/"
+          className="text-xl md:text-4xl font-semibold text-white-a12 max-w-screen-xl hover:text-white-a12"
+        >
+          Aura.ui
+        </a>
 
-        <div className="flex space-x-8 items-center">
+        <div className="hidden md:flex space-x-8 items-center">
           {routes.map((item, index) => (
             <a
               href={item.path}
               key={`${item.path}-${index}`}
               className="text-xl font-light text-white hover:opacity-50 transition-all duration-200 ease-in"
-            >{item.name}</a>
+            >
+              {item.name}
+            </a>
           ))}
 
-          <a href="https://github.com/rainasaxena/Aura.ui" target="_blank"><GitHubLogoIcon className="h-8 w-8"/></a>
+          <a href="https://github.com/rainasaxena/Aura.ui" target="_blank">
+            <GitHubLogoIcon className="h-8 w-8" />
+          </a>
+        </div>
+        <div className="">
+          <HamburgerMenuIcon
+            onClick={() => setIsOpen(!isOpen)}
+            className="h-6 w-6"
+          />
         </div>
       </div>
-    </nav>
+      {isOpen && (
+        <motion.div layout className="flex w-full items-center flex-col gap-2">
+          <p>A</p>
+          <p>B</p>
+        </motion.div>
+      )}
+    </motion.nav>
   );
 };
 
