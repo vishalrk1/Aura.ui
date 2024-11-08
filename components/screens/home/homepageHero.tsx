@@ -10,12 +10,12 @@ const HomepageHero = () => {
     <div className="relative flex h-[30vh] w-full flex-col items-center justify-center overflow-hidden bg-black-a12 text-white sm:h-[50vh] md:h-[80vh]">
       <div className="absolute inset-0 overflow-hidden opacity-80">
         <Image
-          src="/hero-2.svg"
+          src="/hero-image3.svg"
           alt="Background"
           layout="fill"
           objectFit="contain"
           objectPosition="top"
-          className="absolute scale-125 opacity-50"
+          className="absolute scale-150 opacity-30"
         />
       </div>
       <div className="absolute inset-0 w-full bg-gradient-to-t from-black via-transparent to-black px-12">
@@ -36,10 +36,6 @@ const HomepageHero = () => {
             </h2>
           </FadeIn.Item>
         </div>
-      </div>
-      <div className="relative flex h-[600px] w-full flex-row items-center gap-2 ">
-        <div className="-left-80 absolute top-10 h-[250px] w-1/4 bg-[#A5FECB] opacity-20 blur-[200px]" />
-        <div className="-right-80 absolute h-[400px] w-1/4 bg-[#A5FECB] opacity-20 blur-[200px]" />
       </div>
     </div>
   );

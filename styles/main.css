@@ -90,10 +90,6 @@
       @apply text-small;
     }
 
-    a {
-      @apply transition hover:opacity-50;
-    }
-
     ol {
       @apply list-decimal;
     }
