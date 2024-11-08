@@ -7,7 +7,7 @@ const Spacer = () => <div style={{ marginTop: "24px" }} />;
 
 const HomepageHero = () => {
   return (
-    <div className="relative flex h-[30vh] w-full flex-col items-center justify-center overflow-hidden bg-black-a12 text-white sm:h-[50vh] md:h-[80vh]">
+    <div className="relative flex h-[30vh] w-full flex-col items-center justify-center overflow-hidden bg-transparent text-white sm:h-[50vh] md:h-[80vh]">
       <div className="absolute inset-0 overflow-hidden opacity-80">
         <Image
           src="/hero-2.svg"
@@ -36,10 +36,6 @@ const HomepageHero = () => {
             </h2>
           </FadeIn.Item>
         </div>
-      </div>
-      <div className="relative flex h-[600px] w-full flex-row items-center gap-2 ">
-        <div className="-left-80 absolute top-10 h-[250px] w-1/4 bg-[#A5FECB] opacity-20 blur-[200px]" />
-        <div className="-right-80 absolute h-[400px] w-1/4 bg-[#A5FECB] opacity-20 blur-[200px]" />
       </div>
     </div>
   );
