@@ -5,44 +5,55 @@ import HomepageHero from "./homepageHero";
 
 const Spacer = () => <div style={{ marginTop: "24px" }} />;
 
+export interface GradientPosition {
+  top?: number | string;
+  right?: number | string;
+  bottom?: number | string;
+  left?: number | string;
+}
+
 export interface GradientSize {
   height: number | string;
   width: number | string;
 }
 
 export interface GradientProps {
-  position: string;
+  position: GradientPosition;
   color: string;
   size: GradientSize;
   blur: number;
 }
 
-export interface GradientCanvasProps {
+export interface GradientContainerProps {
   children: React.ReactNode;
 }
 
-export const GradientCanvas: React.FC<GradientCanvasProps> = ({ children }) => {
-  return <div className="fixed inset-0 pointer-events-none">{children}</div>;
+export const GradientContainer: React.FC<GradientContainerProps> = ({ children }) => {
+  return (
+    <div className="relative z-10 pointer-events-none">
+      {children}
+    </div>
+  );
 };
 
-export const Gradient: React.FC<GradientProps> = ({
-  position,
-  color,
-  size,
-  blur,
-}) => {
-  const height =
-    typeof size.height === "number" ? `${size.height}px` : size.height;
-  const width = typeof size.width === "number" ? `${size.width}px` : size.width;
+
+export const Gradient: React.FC<GradientProps> = ({ position, color, size, blur }) => {
+  const styles: GradientPosition = {
+    top: typeof position.top === 'number' ? `${position.top}px` : position.top,
+    right: typeof position.right === 'number' ? `${position.right}px` : position.right,
+    bottom: typeof position.bottom === 'number' ? `${position.bottom}px` : position.bottom,
+    left: typeof position.left === 'number' ? `${position.left}px` : position.left,
+  };
 
   return (
     <div
-      className={`absolute ${position}`}
+      className="absolute"
       style={{
-        height,
-        width,
+        ...styles,
+        height: typeof size.height === 'number' ? `${size.height}px` : size.height,
+        width: typeof size.width === 'number' ? `${size.width}px` : size.width,
         backgroundColor: color,
-        opacity: 0.5,
+        opacity: 0.4,
         filter: `blur(${blur}px)`,
       }}
     />
@@ -52,29 +63,30 @@ export const Gradient: React.FC<GradientProps> = ({
 const Home: React.FC = () => {
   return (
     <>
-      <GradientCanvas>
-        <Gradient
-          position="top-10 -left-80"
+      <GradientContainer>
+        <Gradient 
+          position={{ top: 60, left: "-250px" }}
           color="#A5FECB"
           size={{ height: 250, width: "25%" }}
           blur={200}
         />
-        <Gradient
-          position="top-80 -right-80"
+        <Gradient 
+          position={{ top: "500px", right: "-400px" }}
           color="#A5FECB"
-          size={{ height: 400, width: "20%" }}
+          size={{ height: 400, width: "25%" }}
           blur={200}
         />
-      </GradientCanvas>
+      </GradientContainer>
 
       <FadeIn.Container>
-        <div className="relative flex w-full flex-row items-center gap-2">
+        <div className="relative flex flex-row items-center gap-2 overflow-hidden">
           <HomepageHero />
         </div>
         <FadeIn.Item>
           <HomeCategory />
         </FadeIn.Item>
         <Spacer />
+        <div className="h-[900px]">ABC</div>
       </FadeIn.Container>
     </>
   );

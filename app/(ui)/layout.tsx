@@ -35,7 +35,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <React.Fragment>
-      <div className="mt-16 px-4 lg:px-24">
+      <div className="mt-24 px-4 lg:px-24">
         <Breadcrumb />
         <div className="mx-auto flex min-w-xl">
           <Sidebar articles={articles} onSelectArticle={handleSelectArticle} />

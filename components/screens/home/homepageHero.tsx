@@ -10,12 +10,12 @@ const HomepageHero = () => {
     <div className="relative flex h-[30vh] w-full flex-col items-center justify-center overflow-hidden bg-transparent text-white sm:h-[50vh] md:h-[80vh]">
       <div className="absolute inset-0 overflow-hidden opacity-80">
         <Image
-          src="/hero-2.svg"
+          src="/hero-image3.svg"
           alt="Background"
           layout="fill"
           objectFit="contain"
           objectPosition="top"
-          className="absolute scale-125 opacity-50"
+          className="absolute scale-150 opacity-30"
         />
       </div>
       <div className="absolute inset-0 w-full bg-gradient-to-t from-black via-transparent to-black px-12">

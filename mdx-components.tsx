@@ -211,7 +211,7 @@ const components: MDXComponents = {
   VoteButtonExample: VoteButtonExample,
 
   GradientTextPreview: () => {
-    return <GradientText />;
+    return <GradientText text="Gradient Text" startColor="#666666" endColor="#ffffff"/>
   },
 
   // Tabs
