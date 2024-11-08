@@ -27,7 +27,7 @@ const routes: Route[] = [
 
 const Navbar = () => {
   return (
-    <nav className="sticky top-0 z-50 bg-transparent bg-opacity-40 backdrop-blur-sm bg-white transition-all duration-300">
+    <nav className="fixed w-full top-0 z-50 bg-transparent bg-opacity-40 backdrop-blur-sm bg-white transition-all duration-300">
       <div className="flex justify-between items-center h-[80px] max-w-screen-xl mx-auto px-8">
         <a href="/" className="text-4xl font-semibold text-white-a12 hover:text-white-a12">Aura.ui</a>
 
