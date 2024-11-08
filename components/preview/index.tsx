@@ -38,8 +38,8 @@ const Preview = ({ component, code, codeblock, ...props }: PreviewProps) => {
           type="button"
           className={`rounded-lg px-3 py-1.5 text-sm transition-all duration-200 ${
             activeTab === "preview"
-              ? "bg-primary text-primary-foreground"
-              : "bg-muted text-muted-foreground hover:bg-muted/80"
+              ? "bg-muted text-primary-foreground"
+              : "text-muted-foreground hover:bg-muted/80"
           }`}
           onClick={() => setActiveTab("preview")}
         >
@@ -49,8 +49,8 @@ const Preview = ({ component, code, codeblock, ...props }: PreviewProps) => {
           type="button"
           className={`rounded-lg px-3 py-1.5 text-sm transition-all duration-200 ${
             activeTab === "code"
-              ? "bg-primary text-primary-foreground"
-              : "bg-muted text-muted-foreground hover:bg-muted/80"
+              ? "bg-muted text-primary-foreground"
+              : "text-muted-foreground hover:bg-muted/80"
           }`}
           onClick={() => setActiveTab("code")}
         >

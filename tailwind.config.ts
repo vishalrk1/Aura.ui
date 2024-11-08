@@ -14,6 +14,9 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        primary: "#5433FF",
+        secondary: "#20BDFF",
+        themeGreen: "#a5fecb",
         gray: {
           1: "var(--gray-1)",
           2: "var(--gray-2)",
