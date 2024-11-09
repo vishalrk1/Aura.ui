@@ -25,7 +25,6 @@ const Sidebar = ({ onSelectArticle, articles }: SidebarProps) => {
     },
     {} as Record<string, ComponentArticle[]>,
   );
-
   return (
     <FadeIn.Container className="mr-4 hidden w-[30%] md:w-[20%] border-r p-4 md:block">
       {ComponentCategories.map((category) => (

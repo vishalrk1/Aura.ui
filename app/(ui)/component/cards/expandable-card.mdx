@@ -1,0 +1,240 @@
+---
+title: "Exapndable Card"
+author: 
+  name: "Vishal Karangale"
+  link: "https://x.com/KarangaleVishal"
+  handle: "KarangaleVishal"
+time:
+  created: "2024-11-9T19:24:46.167Z"
+  updated: "2024-11-9T09:56:06.853Z"
+tags: ["tailwindCss", "framer motion", "lucid react"]
+---
+
+<Preview 
+  component={<ExpandableCardExample />}
+  code={{
+  title: "ExapndableCard",
+  language: "tsx",
+  content: `
+import { motion } from "framer-motion";
+import { useState } from "react";
+
+import { ExpandableCardBody, ExpandableCardHeader, ExpandableCardWrapper } from ".";
+import HoverFillButton from "../../Button/HoverFillButton/HoverFillButton";
+import AnimatedBorder from "../../Other/AnimatedBorder";
+
+export const ExapandedCardExample = () => {
+    const [isOpen, setIsOpen] = useState(false);
+    return (
+        <ExpandableCardWrapper width="400px" isOpen={isOpen}>
+        <ExpandableCardHeader
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            title={
+            <motion.div className="w-max rounded-full bg-[#0DFFC5]/5 px-3 py-1 font-medium font-sans text-[#0DFFC5] text-sm">
+                Press On this card
+            </motion.div>
+            }
+        >
+            <motion.div layout className="flex flex-col pl-2">
+            <motion.p
+                layout
+                className="select-none font-medium font-sans text-md text-white"
+            >
+                This Card Expands 🫡
+            </motion.p>
+            <motion.p
+                layout
+                key={isOpen ? "open" : "close"}
+                className="mt-1.5 select-none font-sans text-sm text-white/70"
+            >
+                The card shifts its layou smoothly on tap
+            </motion.p>
+            </motion.div>
+        </ExpandableCardHeader>
+        <ExpandableCardBody isOpen={isOpen}>
+            <AnimatedBorder />
+            <div className="mt-4 flex w-full items-center justify-center">
+            <HoverFillButton onClick={() => setIsOpen(false)}>Hover Here</HoverFillButton>
+            </div>
+        </ExpandableCardBody>
+    </ExpandableCardWrapper>
+    );
+};
+  `,
+}}
+/>
+
+# Component Props
+<div style={{marginTop: "4px"}}/>
+## Expandable Card Wrapper
+<PropsTable data={[
+  {
+    name: "children",
+    type: "React.Node"
+  },
+  {
+    name: "isOpen",
+    type: "boolean",
+    default: "false"
+  },
+  {
+    name: "width",
+    type: "string"
+  }
+]}/>
+
+<div style={{marginTop: "4px"}}/>
+## Expandable Card Header
+<PropsTable data={[
+  {
+    name: "children",
+    type: "React.Node"
+  },
+  {
+    name: "isOpen",
+    type: "boolean",
+    default: "false"
+  },
+  {
+    name: "seIsOpen",
+    type: "function",
+    default: "()=>void"
+  },
+  {
+    name: "title",
+    type: "React.Node | string"
+  }
+]}/>
+
+<div style={{marginTop: "4px"}}/>
+## Expandable Card Body
+<PropsTable data={[
+  {
+    name: "children",
+    type: "React.Node"
+  },
+  {
+    name: "isOpen",
+    type: "boolean",
+    default: "false"
+  },
+]}/>
+
+# Base Component
+
+> Copy and paste the following base component in your project\
+> Make sure to install all the required dependencies
+
+```tsx title="HoverButton.tsx" showLineNumbers=true
+import { motion } from "framer-motion";
+import { X } from "lucide-react";
+import type { ReactNode } from "react";
+
+interface ExpandableCardWrapperProps {
+  children: ReactNode;
+  isOpen: boolean;
+  width: string;
+}
+
+export const ExpandableCardWrapper: React.FC<ExpandableCardWrapperProps> = ({
+  children,
+  isOpen,
+  width,
+}) => (
+  <motion.div
+    layout
+    className="group relative cursor-pointer flex flex-col bg-[#1A1A1A] overflow-hidden transition-shadow ease-out hover:shadow-md shadow-inner rounded-2xl p-4 gap-4"
+    initial="close"
+    animate={isOpen ? "open" : "close"}
+    variants={{
+      open: {
+        width: width,
+        transition: { type: "spring", damping: 15, stiffness: 100 },
+      },
+      close: {
+        width: "200px",
+        transition: { delay: 0.3, type: "spring", damping: 15, stiffness: 100 },
+      },
+    }}
+  >
+    {children}
+  </motion.div>
+);
+
+interface ExpandableCardHeaderProps {
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+  title: string | ReactNode;
+  children: ReactNode;
+}
+
+export const ExpandableCardHeader: React.FC<ExpandableCardHeaderProps> = ({
+  isOpen,
+  setIsOpen,
+  title,
+  children,
+}) => {
+  return (
+    <motion.div
+      layout
+      onClick={() => setIsOpen(!isOpen)}
+      className="flex flex-col gap-4"
+    >
+      <motion.div
+        layout
+        className="flex flex-row items-center justify-between w-full"
+      >
+        <motion.div className="flex-grow">{title}</motion.div>
+        {isOpen && (
+          <motion.div className="bg-[#0DFFC5] p-1 rounded-full">
+            <X className="w-5 h-5 text-background" />
+          </motion.div>
+        )}
+      </motion.div>
+      <motion.div layout className="flex flex-col gap-1">
+        {children}
+      </motion.div>
+    </motion.div>
+  );
+};
+
+interface ExpandableCardBodyProps {
+  children: ReactNode;
+  isOpen: boolean;
+}
+
+export const ExpandableCardBody: React.FC<ExpandableCardBodyProps> = ({
+  children,
+  isOpen,
+}) => (
+  <>
+    {isOpen && (
+      <motion.div
+        layout
+        initial="closed"
+        animate="open"
+        exit="closed"
+        variants={{
+          open: {
+            transition: {
+              staggerChildren: 0.05,
+              delayChildren: 0.3,
+            },
+          },
+          closed: {
+            transition: {
+              staggerChildren: 0.05,
+              staggerDirection: -1,
+            },
+          },
+        }}
+        className="flex flex-col items-start gap-2"
+      >
+        {children}
+      </motion.div>
+    )}
+  </>
+);
+
+```

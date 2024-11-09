@@ -22,6 +22,7 @@ import GradientButton from "./components/displayComponents/Button/GradientButton
 import HoverButton from "./components/displayComponents/Button/HoverButton/HoverButton";
 import HoverFillButton from "./components/displayComponents/Button/HoverFillButton/HoverFillButton";
 import ReadMoreButton from "./components/displayComponents/Button/ReadMoreButton";
+import { ExapandedCardExample } from "./components/displayComponents/Cards/ExpandableCard/example";
 import { BottomBorderTabExample } from "./components/displayComponents/Tab/BottomBorderTab/example";
 import {
   FadeUpTextPreview,
@@ -228,6 +229,10 @@ const components: MDXComponents = {
     );
   },
 
+  // cards
+  ExpandableCardExample: ExapandedCardExample,
+
+  // Texts
   GradientTextPreview: () => {
     return (
       <GradientText
