@@ -85,7 +85,7 @@ const BottomBorderTab: React.FC<BottomBorderTabProps> = ({
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.3 }}
-          className="my-4 flex w-full flex-col gap-10 p-4"
+          className="my-4 flex w-full flex-col gap-10 p-4 text-sm md:text-base"
         >
           {tabs.find((tab) => tab.id === activeTab)?.content}
         </motion.div>

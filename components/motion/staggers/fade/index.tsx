@@ -45,8 +45,18 @@ function Container({ children, className }: React.HTMLProps<HTMLDivElement>) {
   );
 }
 
-function Item({ children }: { children: React.ReactNode }) {
-  return <motion.div variants={item}>{children}</motion.div>;
+function Item({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <motion.div variants={item} className={className}>
+      {children}
+    </motion.div>
+  );
 }
 
 export { Container, Item };
