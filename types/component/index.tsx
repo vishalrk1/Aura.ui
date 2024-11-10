@@ -62,6 +62,7 @@ export const ComponentCategories: string[] = [
   "button",
   "cards",
   "tab",
+  "other",
 ];
 
 export interface CodeType {

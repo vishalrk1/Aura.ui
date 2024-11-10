@@ -1,0 +1,124 @@
+---
+title: "Animated Border"
+author: 
+  name: "Vishal Karangale"
+  link: "https://x.com/KarangaleVishal"
+  handle: "KarangaleVishal"
+time:
+  created: "2024-11-10T19:24:46.167Z"
+  updated: "2024-11-10T09:56:06.853Z"
+tag: ["framer motion"]
+---
+
+<Preview 
+  component={<AnimatedBorderExample />}
+  code={{
+  title: "animatedborder",
+  language: "tsx",
+  content: `
+import { motion } from "framer-motion";
+import { twMerge } from "tailwind-merge";
+
+interface AnimatedBorderProps {
+    className?: string;
+}
+
+const AnimatedBorder: React.FC<AnimatedBorderProps> = ({ className }) => {
+    return (
+        <motion.div
+            layout
+            initial="closed"
+            animate="open"
+            exit="closed"
+            variants={{
+                open: {
+                scaleX: 1,
+                originX: 0,
+                transition: {
+                    delay: 0.2,
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 20,
+                },
+                },
+                closed: {
+                scaleX: 0,
+                originX: 0,
+                transition: {
+                    delay: 0,
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 20,
+                },
+                },
+            }}
+            className={twMerge("w-full border-white/10 border-t-2", className)}
+        />
+    );
+};
+
+export default AnimatedBorder;
+
+  `,
+}}
+/>
+
+# Component Props
+
+<PropsTable data={[
+  {
+    name: "className",
+    type: "string"
+  },
+]}/>
+
+# Base Component
+
+> Copy and paste the following base component in your project\
+> Make sure to install all the required dependencies
+
+```tsx title="basic.tsx" showLineNumbers=true
+
+import { motion } from "framer-motion";
+import { twMerge } from "tailwind-merge";
+
+interface AnimatedBorderProps {
+  className?: string;
+}
+
+const AnimatedBorder: React.FC<AnimatedBorderProps> = ({ className }) => {
+  return (
+    <motion.div
+      layout
+      initial="closed"
+      animate="open"
+      exit="closed"
+      variants={{
+        open: {
+          scaleX: 1,
+          originX: 0,
+          transition: {
+            delay: 0.2,
+            type: "spring",
+            stiffness: 100,
+            damping: 20,
+          },
+        },
+        closed: {
+          scaleX: 0,
+          originX: 0,
+          transition: {
+            delay: 0,
+            type: "spring",
+            stiffness: 100,
+            damping: 20,
+          },
+        },
+      }}
+      className={twMerge("w-full border-white/10 border-t-2", className)}
+    />
+  );
+};
+
+export default AnimatedBorder;
+```

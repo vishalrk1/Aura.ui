@@ -83,7 +83,7 @@ export default function Page({ params }: PageProps) {
                 <div
                   className={twMerge(
                     "flex h-[200px] w-full items-stretch gap-3",
-                    chunkIndex % 2 !== 0 ? "flex-row-reverse" : "flex-row",
+                    chunkIndex % 2 === 0 ? "flex-row-reverse" : "flex-row",
                   )}
                 >
                   <div className="flex w-[60%] flex-col gap-3">

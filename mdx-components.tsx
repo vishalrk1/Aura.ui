@@ -23,6 +23,8 @@ import HoverButton from "./components/displayComponents/Button/HoverButton/Hover
 import HoverFillButton from "./components/displayComponents/Button/HoverFillButton/HoverFillButton";
 import ReadMoreButton from "./components/displayComponents/Button/ReadMoreButton";
 import { ExapandedCardExample } from "./components/displayComponents/Cards/ExpandableCard/example";
+import AnimatedBorder from "./components/displayComponents/Other/AnimatedBorder";
+import { ImageStackSliderExample } from "./components/displayComponents/Other/ImageStackSlider/example";
 import { BottomBorderTabExample } from "./components/displayComponents/Tab/BottomBorderTab/example";
 import {
   FadeUpTextPreview,
@@ -245,6 +247,10 @@ const components: MDXComponents = {
 
   // Tabs
   BottomBorderTabExample: BottomBorderTabExample,
+
+  // Other
+  AnimatedBorderExample: AnimatedBorder,
+  ImageStackSliderExample: ImageStackSliderExample,
 };
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
