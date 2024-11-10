@@ -2,8 +2,8 @@ import React from "react";
 import { twMerge } from "tailwind-merge";
 
 interface TextProps {
-  startColor: string;
-  endColor: string;
+  startColor?: string;
+  endColor?: string;
   text: string;
   className?: string;
 }

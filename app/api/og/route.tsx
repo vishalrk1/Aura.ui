@@ -50,30 +50,7 @@ export async function GET(request: Request) {
             backgroundColor: "black",
           }}
         >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              height: "24px",
-              gap: 12,
-            }}
-          >
-            <div style={{ color: "rgba(255, 255, 255, 0.92)" }}>
-              next-sylph-portfolio
-            </div>
-            {title && (
-              <div style={{ color: "rgba(255, 255, 255, 0.39)" }}>/</div>
-            )}
-            {title ? (
-              <div style={{ color: "rgba(255, 255, 255, 0.39)" }}>
-                {title.toLowerCase()}
-              </div>
-            ) : (
-              <svg width="16" viewBox="0 0 75 65" fill="white">
-                <path d="M37.59.25l36.95 64H.64l36.95-64z" />
-              </svg>
-            )}
-          </div>
+          123
         </div>
       ),
       {

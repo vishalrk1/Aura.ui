@@ -1,3 +1,4 @@
+import GradientText from "@/components/displayComponents/Text/GradientText/GradientText";
 import HomeCategory from "@/components/home-category/HomeCategory";
 import * as FadeIn from "@/components/motion/staggers/fade";
 
@@ -96,7 +97,6 @@ const Home: React.FC = () => {
           <HomeCategory />
         </FadeIn.Item>
         <Spacer />
-        <div className="h-[900px]">ABC</div>
       </FadeIn.Container>
     </>
   );
