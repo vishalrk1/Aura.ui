@@ -1,0 +1,151 @@
+---
+title: "Hover Button one"
+author: 
+  name: "Vishal Karangale"
+  link: "https://x.com/KarangaleVishal"
+  handle: "KarangaleVishal"
+time:
+  created: "2024-11-8T19:24:46.167Z"
+  updated: "2024-11-8T09:56:06.853Z"
+tags: ["Framer Motion", "tailwindCss"]
+---
+
+<Preview 
+  component={<HoverButtonOneExample />}
+  code={{
+  title: "Hover Button",
+  language: "tsx",
+  content: `
+    <HoverButton
+        buttonText="Components"
+        expandText="Start Building"
+        icon="😎"
+    />
+  `,
+}}
+/>
+
+# Component Props
+<br />
+## Required Props
+
+<PropsTable data={[
+  {
+    name: "className",
+    type: "string"
+  },
+]}/>
+
+## Optional Props
+
+<PropsTable data={[
+  {
+    name: "className",
+    type: "string"
+  },
+]}/>
+
+# Base Component
+
+> Copy and paste the following base component in your project\
+> Make sure to install all the required dependencies
+
+```tsx title="HoverButton.tsx" showLineNumbers=true
+"use client";
+
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { twMerge } from "tailwind-merge";
+
+interface HoverButtonProps {
+  expandText: string;
+  buttonText: string;
+  icon: string | JSX.Element;
+}
+
+const HoverButton: React.FC<HoverButtonProps> = ({
+  buttonText,
+  icon,
+  expandText,
+}) => {
+  const [expand, setExapnd] = useState(false);
+  return (
+    <motion.button
+      layout
+      onHoverStart={() => setExapnd(true)}
+      onHoverEnd={() => setExapnd(false)}
+      className="flex w-56 items-center gap-2 overflow-hidden rounded-full bg-white-a12 p-1"
+    >
+      <motion.div layout className="flex w-full items-center">
+        <motion.div
+          layout
+          animate={{
+            width: expand ? "100%" : "40%",
+            transition: { duration: 0.5, ease: "easeInOut" },
+          }}
+          className={twMerge(
+            "flex h-full items-center justify-center gap-3 rounded-full bg-purple-600 py-2",
+          )}
+        >
+          <motion.p
+            variants={{
+              initial: { opacity: 0, x: -30 },
+              animate: {
+                opacity: 1,
+                x: 0,
+                transition: { duration: 0.5, ease: "easeInOut" },
+              },
+            }}
+            initial="initial"
+            animate={expand ? "animate" : "initial"}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className={twMerge(
+              "whitespace-nowrap font-semibold text-lg text-white",
+              expand ? "block" : "hidden",
+            )}
+          >
+            {expandText}
+          </motion.p>
+          <motion.div layout>{icon}</motion.div>
+        </motion.div>
+        <motion.div
+          layout
+          animate={{
+            width: expand ? "0%" : "60%",
+            padding: expand ? "0px" : "6px",
+            transition: { duration: 0.5, ease: "easeInOut" },
+          }}
+          className={twMerge(
+            "flex items-center justify-center rounded-full bg-white py-2.5 text-black-a12",
+            !expand && "mx-1 px-2",
+          )}
+        >
+          <motion.h1
+            variants={{
+              initial: { x: -20, opacity: 0 },
+              animate: {
+                x: 0,
+                opacity: 1,
+                transition: { duration: 0.5, ease: "easeInOut" },
+              },
+              exit: {
+                opacity: [1, 0.2, 0],
+                x: 30,
+                transition: { duration: 0.5, ease: "easeInOut" },
+              },
+            }}
+            initial="initial"
+            animate={expand ? "exit" : "animate"}
+            transition={{ duration: 0.1, ease: "easeInOut" }}
+            className="relative font-semibold text-black-a12 "
+          >
+            {buttonText}
+          </motion.h1>
+        </motion.div>
+      </motion.div>
+    </motion.button>
+  );
+};
+
+export default HoverButton;
+```

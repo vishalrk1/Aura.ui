@@ -7,6 +7,7 @@ import { formatter } from "@/lib/formatter";
 import { getComponentArticles } from "@/lib/mdx";
 import { MDX } from "@/mdx-components";
 
+import { Dot } from "lucide-react";
 import React from "react";
 
 interface Props {
@@ -54,6 +55,20 @@ export const ArticleLayout = ({ article }: Props) => {
                 <PublishedTime />
                 <Separator />
                 <Publishier />
+              </div>
+              <div className="flex flex-wrap gap-3 items-center mt-1 mb-2">
+                {article.tags &&
+                  article.tags.length > 0 &&
+                  article.tags.map((tag) => {
+                    return (
+                      <div
+                        key={tag}
+                        className="flex items-center gap-1 bg-[#191e1f] border-[#292d2e] text-xs py-2 px-3 text-white-a10 rounded-full capitalize"
+                      >
+                        {tag}
+                      </div>
+                    );
+                  })}
               </div>
             </div>
           </FadeIn.Item>
