@@ -27,6 +27,7 @@ import {
 import GradientText from "./components/displayComponents/Text/GradientText/GradientText";
 import FigCaption from "./components/figcaption";
 import { PropsTable } from "./components/propsTable";
+import MaskCursor from "./components/displayComponents/Text/MaskCursor/MaskCursor";
 
 type FigCaptionProps = React.ComponentProps<typeof FigCaption>;
 type PropsTableProps = React.ComponentProps<typeof PropsTable>;
@@ -212,6 +213,10 @@ const components: MDXComponents = {
 
   GradientTextPreview: () => {
     return <GradientText text="Gradient Text" startColor="#666666" endColor="#ffffff"/>
+  },
+
+  MaskCursorPreview: () => {
+    return <MaskCursor/>
   },
 
   // Tabs
