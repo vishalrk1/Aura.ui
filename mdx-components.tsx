@@ -9,7 +9,7 @@ import Link from "@/components/link";
 import Preview from "@/components/preview";
 import { cn } from "@/lib/cn";
 
-import { User } from "lucide-react";
+import { TriangleAlert, User } from "lucide-react";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import React from "react";
 import rehypePrettyCode from "rehype-pretty-code";
@@ -24,6 +24,7 @@ import HoverFillButton from "./components/displayComponents/Button/HoverFillButt
 import ReadMoreButton from "./components/displayComponents/Button/ReadMoreButton";
 import { ExapandedCardExample } from "./components/displayComponents/Cards/ExpandableCard/example";
 import AnimatedBorder from "./components/displayComponents/Other/AnimatedBorder";
+import { ImageCropperExample } from "./components/displayComponents/Other/CropImage/example";
 import { ImageStackSliderExample } from "./components/displayComponents/Other/ImageStackSlider/example";
 import { BottomBorderTabExample } from "./components/displayComponents/Tab/BottomBorderTab/example";
 import {
@@ -139,6 +140,14 @@ const components: MDXComponents = {
   ul: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
     <ul className={cn("mt-2 ml-2 list-disc", className)} {...props} />
   ),
+  WarningAlert: ({ text }: { text: string }) => {
+    return (
+      <div className="my-3 flex items-center gap-3 rounded-lg bg-[#ee7272]/20 px-6 py-3">
+        <TriangleAlert size={24} className="text-white-a8" />
+        <p className="m-0 text-white-a9">{text}</p>
+      </div>
+    );
+  },
   li: ({
     className,
     children,
@@ -251,6 +260,7 @@ const components: MDXComponents = {
   // Other
   AnimatedBorderExample: AnimatedBorder,
   ImageStackSliderExample: ImageStackSliderExample,
+  ImageCropperExample: ImageCropperExample,
 };
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {

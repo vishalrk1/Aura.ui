@@ -1,4 +1,3 @@
-import GradientText from "@/components/displayComponents/Text/GradientText/GradientText";
 import HomeCategory from "@/components/home-category/HomeCategory";
 import * as FadeIn from "@/components/motion/staggers/fade";
 

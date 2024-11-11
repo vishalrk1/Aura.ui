@@ -83,35 +83,35 @@ export default function Page({ params }: PageProps) {
                 <div
                   className={twMerge(
                     "flex h-[200px] w-full items-stretch gap-3",
-                    chunkIndex % 2 === 0 ? "flex-row-reverse" : "flex-row",
+                    chunkIndex % 2 !== 0 ? "flex-row-reverse" : "flex-row",
                   )}
                 >
+                  <Link
+                    href={`component/${chunk[0].articles[0].slug}`}
+                    className="block w-[40%]"
+                  >
+                    <FadeIn.Item className="flex h-full w-full flex-col items-center justify-center gap-2 rounded-xl bg-[#191e1f] p-4 font-semibold capitalize sm:text-xl">
+                      {chunk[0].category}
+                    </FadeIn.Item>
+                  </Link>
                   <div className="flex w-[60%] flex-col gap-3">
                     <Link
-                      href={`component/${chunk[0].articles[0].slug}`}
-                      className="block flex-1 hover:scale-102"
-                    >
-                      <FadeIn.Item className="flex h-full w-full items-center justify-center rounded-xl bg-[#191e1f] p-4 font-semibold text-base capitalize sm:text-xl">
-                        {chunk[0].category}
-                      </FadeIn.Item>
-                    </Link>
-                    <Link
                       href={`component/${chunk[1].articles[0].slug}`}
-                      className="block flex-1"
+                      className="block flex-1 hover:scale-102"
                     >
                       <FadeIn.Item className="flex h-full w-full items-center justify-center rounded-xl bg-[#191e1f] p-4 font-semibold text-base capitalize sm:text-xl">
                         {chunk[1].category}
                       </FadeIn.Item>
                     </Link>
+                    <Link
+                      href={`component/${chunk[2].articles[0].slug}`}
+                      className="block flex-1"
+                    >
+                      <FadeIn.Item className="flex h-full w-full items-center justify-center rounded-xl bg-[#191e1f] p-4 font-semibold text-base capitalize sm:text-xl">
+                        {chunk[2].category}
+                      </FadeIn.Item>
+                    </Link>
                   </div>
-                  <Link
-                    href={`component/${chunk[2].articles[0].slug}`}
-                    className="block w-[40%]"
-                  >
-                    <FadeIn.Item className="flex h-full w-full flex-col items-center justify-center gap-2 rounded-xl bg-[#191e1f] p-4 font-semibold capitalize sm:text-xl">
-                      {chunk[2].category}
-                    </FadeIn.Item>
-                  </Link>
                 </div>
               ) : (
                 chunk.map((item) => (
