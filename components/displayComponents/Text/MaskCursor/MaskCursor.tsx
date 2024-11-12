@@ -1,62 +1,78 @@
-'use client'; // Mark this file as a Client Component
+"use client";
 
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import useMousePosition from './useMousePosition'; // Ensure this is the correct relative path
+import type React from "react";
+import type { ReactNode } from "react";
 
-interface Mask {
-  x: number;
-  y: number;
+import { motion, useMotionValue, useTransform } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { twMerge } from "tailwind-merge";
+
+import useMousePosition from "./useMousePosition"; // Ensure this is the correct relative path
+
+interface MaskCursorProps {
+  // children: ReactNode;
+  hoverColor?: string;
+  maskColor?: string;
+  clasName?: string;
 }
-
-const MaskCursor: React.FC = () => {
+const MaskCursor: React.FC<MaskCursorProps> = ({
+  // children,
+  clasName,
+  hoverColor,
+  maskColor = "#A5FECB",
+}) => {
   const [isHovered, setIsHovered] = useState(false);
   const { x, y } = useMousePosition();
-  
-  // Set the size of the mask (adjust size as needed)
+
+  const maskX = useMotionValue(0);
+  const maskY = useMotionValue(0);
   const size = isHovered ? 100 : 40;
 
-  // Calculate the offset of the mask based on the cursor position
-  // The mask position needs to be adjusted so that it aligns correctly with the cursor
-  const maskOffsetX = x - size * 4.9;  // Center the mask on the cursor's X position
-  const maskOffsetY = y - size * 3.8;  // Center the mask on the cursor's Y position
+  // Reference to the container to calculate offsets
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Update mask position when the mouse moves
+  useEffect(() => {
+    if (containerRef.current) {
+      const containerRect = containerRef.current.getBoundingClientRect();
+      maskX.set(x - containerRect.left - size / 2);
+      maskY.set(y - containerRect.top - size / 2);
+    }
+  }, [x, y, size, maskX, maskY]);
+
+  // Smoothen the transformation for mask position using `framer-motion`
+  const smoothMaskX = useTransform(maskX, (value) => `${value}px`);
+  const smoothMaskY = useTransform(maskY, (value) => `${value}px`);
 
   return (
-    <main className="relative p-10">
-      {/* Mask */}
+    <div
+      className={twMerge("relative p-10 h-full w-full", clasName)}
+      ref={containerRef}
+    >
       <motion.div
-        className="absolute w-full h-full bg-[#A5FECB] text-4xl"
+        className={twMerge("absolute inset-0 text-4xl", `bg-[${maskColor}]`)}
         animate={{
-          WebkitMaskPosition: `${maskOffsetX}px ${maskOffsetY}px`, // Center mask on cursor
-          WebkitMaskSize: `${size}px`, // Set mask size
+          WebkitMaskSize: `${size}px`,
         }}
-        transition={{ type: 'tween', ease: 'backOut' }}
+        transition={{ type: "tween", ease: "easeOut", duration: 0.3 }}
         style={{
-          maskImage: "url('Ellipse1.svg')",
-          maskRepeat: "no-repeat",
-          maskPosition: "20%",
-          color: "black",
-          WebkitMaskImage:
-            "url('https://www.svgrepo.com/show/137222/black-circle.svg')", // for Safari compatibility
+          WebkitMaskImage: "url('/black-circle.svg')",
+          WebkitMaskRepeat: "no-repeat",
+          WebkitMaskPosition: `${smoothMaskX.get()} ${smoothMaskY.get()}`,
+          color: hoverColor ? hoverColor : "green",
         }}
       >
-        <p onMouseEnter={() => { setIsHovered(!isHovered); }}>
+        <motion.p
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          className="text-white-a12"
+        >
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores,
           minima! Officiis ratione quidem, odit voluptatum sit non est aliquam
           impedit, nobis earum eius animi cum ab nemo aliquid dignissimos quo.
-        </p>
+        </motion.p>
       </motion.div>
-
-      {/* Body */}
-      <div className="text-4xl">
-        <p>
-          Necessitatibus voluptatibus!
-          <span className="text-[#A5FECB]">Voluptates mollitia</span>
-          aspernatur, ipsum consequatur blanditiis dolor obcaecati at eaque ipsa
-          vitae dignissimos temporibus sequi fugiat magni facilis.
-        </p>
-      </div>
-    </main>
+    </div>
   );
 };
 

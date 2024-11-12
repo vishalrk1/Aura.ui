@@ -18,7 +18,7 @@ const HomepageHero = () => {
           layout="fill"
           objectFit="contain"
           objectPosition="top"
-          className="absolute scale-150 opacity-30"
+          className="absolute scale-120 opacity-30"
         />
       </div>
       <div className="absolute inset-0 mt-[60px] w-full bg-gradient-to-t from-black via-transparent to-black px-12 md:mt-0">

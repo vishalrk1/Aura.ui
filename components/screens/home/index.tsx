@@ -1,8 +1,8 @@
-import GradientText from "@/components/displayComponents/Text/GradientText/GradientText";
 import HomeCategory from "@/components/home-category/HomeCategory";
 import * as FadeIn from "@/components/motion/staggers/fade";
 import { GradientContainer, Gradient } from "@/components/gradient";
 import HomepageHero from "./homepageHero";
+import GetStartedPreview from "@/components/home-category/HomeComponentPreview";
 
 const Spacer = () => <div style={{ marginTop: "24px" }} />;
 
@@ -25,7 +25,7 @@ const Home: React.FC = () => {
         />
       </GradientContainer>
 
-      <FadeIn.Container>
+      <FadeIn.Container animateOnView>
         <div className="relative flex flex-row items-center gap-2 overflow-hidden">
           <HomepageHero />
         </div>
@@ -33,6 +33,9 @@ const Home: React.FC = () => {
           <HomeCategory />
         </FadeIn.Item>
         <Spacer />
+        <FadeIn.Item>
+          <GetStartedPreview />
+        </FadeIn.Item>
       </FadeIn.Container>
     </>
   );

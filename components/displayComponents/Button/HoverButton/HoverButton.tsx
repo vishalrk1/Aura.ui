@@ -24,7 +24,7 @@ const HoverButton: React.FC<HoverButtonProps> = ({
       onHoverStart={() => setExapnd(true)}
       onHoverEnd={() => setExapnd(false)}
       onClick={onClick}
-      className="flex w-56 items-center gap-2 overflow-hidden rounded-full bg-[#191e1f] border-2 border-[#292d2e] p-1 hover:scale-105 transition-all duration-500"
+      className="flex w-56 items-center gap-2 overflow-hidden rounded-full border-2 border-[#292d2e] bg-[#191e1f] p-1"
     >
       <motion.div layout className="flex w-full items-center">
         <motion.div

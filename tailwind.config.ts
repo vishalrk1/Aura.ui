@@ -17,6 +17,8 @@ const config: Config = {
         primary: "#5433FF",
         secondary: "#20BDFF",
         themeGreen: "#a5fecb",
+        grayBg: "#191e1f",
+        grayBorder: "#292d2e",
         gray: {
           1: "var(--gray-1)",
           2: "var(--gray-2)",

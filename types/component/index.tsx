@@ -58,6 +58,7 @@ export interface ComponentArticle {
 
 export const ComponentCategories: string[] = [
   "guide",
+  "featured",
   "text",
   "button",
   "cards",
