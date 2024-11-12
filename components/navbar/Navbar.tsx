@@ -20,7 +20,7 @@ const routes: Route[] = [
   },
   {
     name: "About",
-    path: "#",
+    path: "/about",
   },
 ];
 
