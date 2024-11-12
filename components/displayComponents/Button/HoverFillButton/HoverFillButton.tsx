@@ -1,14 +1,22 @@
+import { twMerge } from "tailwind-merge";
+
 interface HoverButtonProps {
   onClick?: () => void;
+  className?: string;
   children: React.ReactNode;
 }
 
-const HoverFillButton: React.FC<HoverButtonProps> = ({ onClick, children }) => {
+const HoverFillButton: React.FC<HoverButtonProps> = ({
+  onClick,
+  children,
+  className,
+}) => {
   return (
     <button
       type="button"
       onClick={onClick}
-      className='relative z-0 flex items-center justify-center gap-2 overflow-hidden rounded-full border-[1px] w-56 
+      className={twMerge(
+        `relative z-0 flex items-center justify-center gap-2 overflow-hidden rounded-full border-[1px] w-56 
         bg-[#191e1f] border-2 border-[#292d2e] px-4 py-3.5 font-semibold
         capitalize text-white-a12 transition-all duration-500
                 
@@ -22,7 +30,9 @@ const HoverFillButton: React.FC<HoverButtonProps> = ({ onClick, children }) => {
         hover:scale-105 hover:text-black-a12
         hover:before:translate-x-[0%]
         hover:before:translate-y-[0%]
-        active:scale-95'
+        active:scale-95`,
+        className,
+      )}
     >
       {children}
     </button>
