@@ -1,3 +1,5 @@
+import * as FadeIn from "@/components/motion/staggers/fade";
+
 import { Link as NextViewTransition } from "next-view-transitions";
 
 import GradientText from "../displayComponents/Text/GradientText/GradientText";
@@ -39,23 +41,25 @@ const HomeCategory = () => {
     <div className="flex w-full flex-col items-center justify-start py-12">
       <GradientText
         text="Perfect Your Projects With Aura"
-        className="mt-6 mb-2 text-5xl capitalize"
+        className="mt-6 mb-2 text-3xl sm:text-5xl capitalize"
       />
-      <h2 className="text-center w-[60%] mb-8">
+      <h2 className="hidden sm:block text-center w-[60%] mb-8">
         Aura is your ultimate toolkit for beautiful, functional animations. Our
         ready-to-use components let you add style and clarity to your web
         projects in seconds. With Aura, simply copy, paste, and transform your
         website into a visually stunning experience.
       </h2>
-      <div className="grid grid-cols-1 sm: grid-cols-2 gap-6 w-[80%] my-6">
+      <div className="grid grid-cols-2 gap-2 sm:gap-6 w-[90%] sm:w-[80%] my-6">
         {homeData.map((item) => {
           return (
-            <NextViewTransition href={item.path} key={item.title}>
-              <div className="hover:-translate-y-1 flex h-full cursor-pointer flex-col items-start justify-center rounded-lg p-4 px-8 transition-all duration-300 ease-in-out hover:bg-[#191e1f]/40 hover:shadow-lg">
-                <h1 className="font-light text-3xl">{item.title}</h1>
-                <p className="text-white-a7">{item.description}</p>
-              </div>
-            </NextViewTransition>
+            <FadeIn.Item>
+              <NextViewTransition href={item.path} key={item.title}>
+                <div className="hover:-translate-y-1 flex h-full cursor-pointer flex-col items-start justify-center rounded-lg p-4 sm:px-8 transition-all duration-300 ease-in-out hover:bg-[#191e1f]/40 hover:shadow-lg">
+                  <h1 className="font-light text-xl sm:text-3xl">{item.title}</h1>
+                  <p className="text-white-a7 text-xs sm:text-base">{item.description}</p>
+                </div>
+              </NextViewTransition>
+            </FadeIn.Item>
           );
         })}
       </div>

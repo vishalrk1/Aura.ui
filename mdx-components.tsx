@@ -32,9 +32,10 @@ import {
   VoteButtonExample,
 } from "./components/displayComponents/Text/Fadeup/example";
 import GradientText from "./components/displayComponents/Text/GradientText/GradientText";
+import { MaskCursorExample } from "./components/displayComponents/Text/MaskCursor/example";
+import MaskCursor from "./components/displayComponents/Text/MaskCursor/MaskCursor";
 import FigCaption from "./components/figcaption";
 import { PropsTable } from "./components/propsTable";
-import MaskCursor from "./components/displayComponents/Text/MaskCursor/MaskCursor";
 
 type FigCaptionProps = React.ComponentProps<typeof FigCaption>;
 type PropsTableProps = React.ComponentProps<typeof PropsTable>;
@@ -255,9 +256,7 @@ const components: MDXComponents = {
     );
   },
 
-  MaskCursorPreview: () => {
-    return <MaskCursor/>
-  },
+  MaskCursorPreview: MaskCursorExample,
 
   // Tabs
   BottomBorderTabExample: BottomBorderTabExample,

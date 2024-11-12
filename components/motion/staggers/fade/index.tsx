@@ -1,10 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const container = {
-  hidden: {},
+  hidden: { opacity: 1 },
   show: {
+    opacity: 1,
     transition: {
       staggerChildren: 0.05,
       delayChildren: 0.2,
@@ -32,12 +34,20 @@ const item = {
   },
 };
 
-function Container({ children, className }: React.HTMLProps<HTMLDivElement>) {
+function Container({
+  children,
+  className,
+  animateOnView = true,
+}: React.HTMLProps<HTMLDivElement> & { animateOnView?: boolean }) {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const isInView = useInView(containerRef);
+
   return (
     <motion.div
+      ref={containerRef}
       variants={container}
       initial="hidden"
-      animate="show"
+      animate={animateOnView ? (isInView ? "show" : "hidden") : "show"}
       className={className}
     >
       {children}
