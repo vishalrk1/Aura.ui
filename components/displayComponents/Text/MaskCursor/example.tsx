@@ -3,7 +3,5 @@
 import MaskCursor from "./MaskCursor";
 
 export function MaskCursorExample() {
-  return (
-    <MaskCursor />
-  );
+  return <MaskCursor />;
 }
