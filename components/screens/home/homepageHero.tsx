@@ -10,7 +10,7 @@ const Spacer = () => <div style={{ marginTop: "24px" }} />;
 
 const HomepageHero = () => {
   return (
-    <div className="relative flex h-[50vh] w-full flex-col items-center justify-center overflow-hidden bg-transparent text-white md:h-[70vh]">
+    <div className="relative flex h-[50vh] w-full flex-col items-center justify-center overflow-hidden bg-transparent text-white md:h-[100vh]">
       <div className="absolute inset-0 overflow-hidden opacity-80">
         <Image
           src="/hero-image3.svg"
@@ -25,7 +25,7 @@ const HomepageHero = () => {
         <div className="mx-auto flex h-full flex-col items-center justify-center">
           <FadeIn.Item>
             <h1 className="text-center font-bold text-2xl leading-[1.5] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
-              Make your website looks
+              Make your website look
             </h1>
             <h1 className="mt-1 text-center font-bold text-2xl leading-[1.5] sm:text-4xl md:mt-2 md:text-5xl lg:text-6xl xl:text-7xl">
               100x <HomeFadeUpText /> with Aura
@@ -44,11 +44,11 @@ const HomepageHero = () => {
                 <HoverButton
                   buttonText="Components"
                   expandText="Start Building"
-                  icon="😎"
+                  icon="🚀"
                 />
               </Link>
               <Link href="/">
-                <HoverFillButton>Browse template</HoverFillButton>
+                <HoverFillButton>Browse templates ✨</HoverFillButton>
               </Link>
             </div>
           </FadeIn.Item>

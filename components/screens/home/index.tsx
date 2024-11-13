@@ -12,16 +12,23 @@ const Home: React.FC = () => {
     <>
       <GradientContainer>
         <Gradient
-          position={{ top: 60, left: "-250px" }}
-          color="#A5FECB"
+          position={{ top: 300, left: "-250px" }}
+          color="#f4faa7"
           size={{ height: 250, width: "25%" }}
           blur={200}
         />
         <Gradient
-          position={{ top: "500px", right: "-400px" }}
+          position={{ top: "100px", right: "-400px" }}
           color="#A5FECB"
           size={{ height: 400, width: "25%" }}
           blur={200}
+        />
+
+        <Gradient
+          position={{ top: 1200, left: "-250px" }}
+          color="#71f5e5"
+          size={{ height: 200, width: "120%" }}
+          blur={250}
         />
       </GradientContainer>
 

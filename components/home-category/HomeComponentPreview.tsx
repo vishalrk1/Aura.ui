@@ -129,6 +129,7 @@ const GetStartedPreview: React.FC<GetStartedPreviewProps> = ({
     <div
       className={`flex w-full flex-col items-center justify-start py-12 ${className}`}
     >
+      <div className="bg-[#5edbe6] p-2 rounded-md">QUICK START</div>
       <GradientText text="Get Started Today" className="mb-1" />
       <h2 className="mb-4 w-[60%] text-center text-muted-foreground">
         We've crafted animations that are lightweight and optimized, so you can
