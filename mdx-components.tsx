@@ -23,9 +23,14 @@ import HoverButton from "./components/displayComponents/Button/HoverButton/Hover
 import HoverFillButton from "./components/displayComponents/Button/HoverFillButton/HoverFillButton";
 import ReadMoreButton from "./components/displayComponents/Button/ReadMoreButton";
 import { ExapandedCardExample } from "./components/displayComponents/Cards/ExpandableCard/example";
+import { ProgressCardExample } from "./components/displayComponents/Cards/Progress Card/example";
 import AnimatedBorder from "./components/displayComponents/Other/AnimatedBorder";
 import { ImageCropperExample } from "./components/displayComponents/Other/CropImage/example";
 import { ImageStackSliderExample } from "./components/displayComponents/Other/ImageStackSlider/example";
+import {
+  AutoStepProgressExample,
+  SegmentedLoaderExample,
+} from "./components/displayComponents/Other/Progress/example";
 import { BottomBorderTabExample } from "./components/displayComponents/Tab/BottomBorderTab/example";
 import {
   FadeUpTextPreview,
@@ -33,7 +38,6 @@ import {
 } from "./components/displayComponents/Text/Fadeup/example";
 import GradientText from "./components/displayComponents/Text/GradientText/GradientText";
 import { MaskCursorExample } from "./components/displayComponents/Text/MaskCursor/example";
-import MaskCursor from "./components/displayComponents/Text/MaskCursor/MaskCursor";
 import FigCaption from "./components/figcaption";
 import { PropsTable } from "./components/propsTable";
 
@@ -244,6 +248,7 @@ const components: MDXComponents = {
 
   // cards
   ExpandableCardExample: ExapandedCardExample,
+  ProgressCardExample: ProgressCardExample,
 
   // Texts
   GradientTextPreview: () => {
@@ -265,6 +270,8 @@ const components: MDXComponents = {
   AnimatedBorderExample: AnimatedBorder,
   ImageStackSliderExample: ImageStackSliderExample,
   ImageCropperExample: ImageCropperExample,
+  SegmentedLoaderExample: SegmentedLoaderExample,
+  AutoStepProgressExample: AutoStepProgressExample,
 };
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
