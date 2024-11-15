@@ -12,9 +12,10 @@ import { twMerge } from "tailwind-merge";
 interface SidebarProps {
   onSelectArticle: (slug: string) => void;
   articles: ComponentArticle[];
+  className?: string;
 }
 
-const Sidebar = ({ onSelectArticle, articles }: SidebarProps) => {
+const Sidebar = ({ onSelectArticle, articles, className }: SidebarProps) => {
   const { slug } = useParams();
   const groupedArticles = ComponentCategories.reduce(
     (acc, category) => {
@@ -26,7 +27,12 @@ const Sidebar = ({ onSelectArticle, articles }: SidebarProps) => {
     {} as Record<string, ComponentArticle[]>,
   );
   return (
-    <FadeIn.Container className="mr-4 hidden w-[30%] md:w-[20%] border-r p-4 md:block">
+    <FadeIn.Container
+      className={twMerge(
+        "mr-4 hidden w-[30%] md:w-[20%] border-r p-4 md:block",
+        className,
+      )}
+    >
       {ComponentCategories.map((category) => (
         <FadeIn.Item key={category}>
           <div className="my-4 mb-2">

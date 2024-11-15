@@ -1,5 +1,5 @@
 ---
-title: "Getting Started"
+title: "Getting Started with Aura UI"
 author: 
   name: "Raphael Salaja"
   link: "https://twitter.com/raphaelsalaja"
@@ -8,7 +8,153 @@ time:
   created: "2024-10-12T20:54:05.150Z"
   updated: "2024-10-17T09:56:06.854Z"
 ---
-<br />
+Welcome to the Aura UI! This guide will help you integrate the library into your React or Next.js project with ease. Follow the steps below to get started quickly.
 
 # Installation
-Follow these simple steps to get started:
+
+To begin, install the library along with its required peer dependencies:
+
+## Step 1: Install the Package
+
+Use the following command to add the library to your project:
+
+```bash
+npm install framer-motion tailwindcss
+# or
+yarn add framer-motion tailwindcss
+# or
+pnpm add framer-motion tailwindcss
+```
+
+## Step 2: Configure Tailwind CSS
+
+If you don’t already have Tailwind CSS set up in your project, follow these steps:
+
+<br />
+1. Install Tailwind CSS:
+
+   ```bash
+   npm install -D tailwindcss postcss autoprefixer
+   npx tailwindcss init
+   ```
+
+<br />
+2. Update `tailwind.config.js` to include the library components in the `content` array:
+
+   ```javascript
+    module.exports = {
+      content: [
+        './src/**/*.{js,ts,jsx,tsx}', // Adjust according to your file structure
+        './node_modules/animated-ui-library/**/*.{js,ts,jsx,tsx}',
+      ],
+      theme: {
+        extend: {
+          colors: {
+            themeGreen: "#a5fecb",
+            grayBg: "#191e1f",
+            grayBorder: "#292d2e",
+          }
+        },
+      },
+      plugins: [
+        plugin(({ addUtilities }) => {
+          addUtilities({
+            ".text-small": {
+              fontSize: "12px",
+              letterSpacing: "0.01px",
+            },
+            ".text-default": {
+              fontSize: "14px",
+              lineHeight: "21px",
+              letterSpacing: "-0.09px",
+            },
+          });
+        }),
+      ],
+    };
+   ```
+<br />
+3. Add Tailwind directives to your CSS file (e.g., `globals.css`):
+
+   ```css
+   @tailwind base;
+   @tailwind components;
+   @tailwind utilities;
+   ```
+
+<br />
+---
+
+# Usage
+
+Here’s how you can start using the library’s components:
+
+## Step 1: Import Components
+
+Each component is fully optimized for animations with Framer Motion and styled with Tailwind CSS. Import the components into your React or Next.js project:
+
+```javascript
+import { AnimatedButton, AnimatedCard } from 'animated-ui-library';
+```
+
+## Step 2: Customize with Tailwind Classes
+
+You can easily customize each component using Tailwind classes:
+
+```jsx
+<AnimatedButton className="bg-green-500 hover:bg-green-700 text-white">
+  Click Me!
+</AnimatedButton>
+```
+
+# Animations
+All components in this library leverage **Framer Motion** for animations. You can customize animations as needed:
+
+
+### Adding Custom Animations
+
+Pass motion properties directly to components:
+
+```jsx
+<AnimatedCard
+  initial={{ opacity: 0, scale: 0.8 }}
+  animate={{ opacity: 1, scale: 1 }}
+  transition={{ duration: 0.5 }}
+  className="w-64 h-32 bg-purple-500 text-white"
+>
+  Custom Animated Card
+</AnimatedCard>
+```
+
+---
+
+## Example Project
+
+Want to see the library in action? Clone our example project repository:
+
+```bash
+git clone https://github.com/vishalrk1/Aura.ui.git
+cd Aura.ui
+npm install
+npm run dev
+```
+
+# Common Issues
+<br />
+1. **Tailwind Classes Not Working:**
+   - Ensure the `tailwind.config.js` file is correctly configured to include the library’s components.
+   
+2. **Framer Motion Not Installed:**
+   - Check that `framer-motion` is installed as a dependency.
+
+# Need Help?
+If you encounter any issues, feel free to [open an issue on GitHub](https://github.com/vishalrk1/Aura.ui/issues).
+
+
+# Feedback and Contributions
+We welcome contributions and feedback! If you have ideas for new components or animations, please [submit a pull request](https://github.com/vishalrk1/Aura.ui/pulls) or reat out to our developers.
+
+
+Thank you for choosing the Animated UI Library! 🚀
+```
+This guide covers installation, setup, usage, and customization, providing users with a complete understanding of how to integrate and use your library effectively.
