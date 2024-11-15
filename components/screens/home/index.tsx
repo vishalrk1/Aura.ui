@@ -1,11 +1,11 @@
+import { Gradient, GradientContainer } from "@/components/gradient";
 import HomeCategory from "@/components/home-category/HomeCategory";
-import * as FadeIn from "@/components/motion/staggers/fade";
-import { GradientContainer, Gradient } from "@/components/gradient";
-import HomepageHero from "./homepageHero";
 import GetStartedPreview from "@/components/home-category/HomeComponentPreview";
+import * as FadeIn from "@/components/motion/staggers/fade";
+
+import HomepageHero from "./homepageHero";
 
 const Spacer = () => <div style={{ marginTop: "24px" }} />;
-
 
 const Home: React.FC = () => {
   return (

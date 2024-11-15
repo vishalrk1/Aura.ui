@@ -55,8 +55,12 @@ const HomeCategory = () => {
             <FadeIn.Item>
               <NextViewTransition href={item.path} key={item.title}>
                 <div className="hover:-translate-y-1 flex h-full cursor-pointer flex-col items-start justify-center rounded-lg p-4 sm:px-8 transition-all duration-300 ease-in-out hover:bg-[#191e1f]/40 hover:shadow-lg">
-                  <h1 className="font-light text-xl sm:text-3xl">{item.title}</h1>
-                  <p className="text-white-a7 text-xs sm:text-base">{item.description}</p>
+                  <h1 className="font-light text-xl sm:text-3xl">
+                    {item.title}
+                  </h1>
+                  <p className="text-white-a7 text-xs sm:text-base">
+                    {item.description}
+                  </p>
                 </div>
               </NextViewTransition>
             </FadeIn.Item>
