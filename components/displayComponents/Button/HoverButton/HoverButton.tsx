@@ -24,9 +24,9 @@ const HoverButton: React.FC<HoverButtonProps> = ({
       onHoverStart={() => setExapnd(true)}
       onHoverEnd={() => setExapnd(false)}
       onClick={onClick}
-      className="flex w-56 items-center gap-2 overflow-hidden rounded-full border-2 border-[#292d2e] bg-[#191e1f] p-1"
+      className="flex w-32 md:w-56 items-center gap-2 overflow-hidden rounded-full border-2 border-[#292d2e] bg-[#191e1f] text-xs md:text-lg px-2 py-1 md:p-1"
     >
-      <motion.div layout className="flex w-full items-center">
+      <motion.div layout className="flex gap-1 w-full items-center">
         <motion.div
           layout
           animate={{
@@ -34,7 +34,7 @@ const HoverButton: React.FC<HoverButtonProps> = ({
             transition: { duration: 0.5, ease: "easeInOut" },
           }}
           className={twMerge(
-            "flex h-full items-center justify-center gap-3 rounded-full py-2",
+            "flex h-full items-center justify-center gap-3 md:gap-0 rounded-full py-2",
             "bg-gradient-to-r from-[#9ae1ff] to-[#c8f4db]",
           )}
         >

@@ -49,7 +49,7 @@ const TabButton: React.FC<TabButtonProps> = ({
       isActive ? "bg-[#1A1A1A]" : "hover:bg-grayBg/50",
     )}
   >
-    <span className="text-xl">{children}</span>
+    <span className="text-base sm:text-xl">{children}</span>
   </button>
 );
 
@@ -129,9 +129,9 @@ const GetStartedPreview: React.FC<GetStartedPreviewProps> = ({
     <div
       className={`flex w-full flex-col items-center justify-start py-12 ${className}`}
     >
-      <div className="bg-[#5edbe6] p-2 rounded-md">QUICK START</div>
-      <GradientText text="Get Started Today" className="mb-1" />
-      <h2 className="mb-4 w-[60%] text-center text-muted-foreground">
+      <div className="bg-[#5edbe6] p-2 rounded-md text-sm md:text-lg">QUICK START</div>
+      <GradientText text="Get Started Today" className="text-3xl md:text-5xl mb-1" />
+      <h2 className="hidden sm:block text-xs sm:text-base mb-4 w-[60%] text-center text-muted-foreground">
         We've crafted animations that are lightweight and optimized, so you can
         add beautiful effects without sacrificing speed. Copy components
         directly into your project and get seamless integration for all
@@ -154,7 +154,7 @@ const GetStartedPreview: React.FC<GetStartedPreviewProps> = ({
           </TabButton>
         </div>
 
-        <div className="min-h-[400px] w-full rounded-lg border-2 border-grayBorder px-6 py-2">
+        <div className="sm:min-h-[400px] w-[80%] sm:w-full rounded-lg border-2 border-grayBorder px-6 py-2">
           {activeTab === "component" ? (
             <div className="flex min-h-[400px] items-center justify-center">
               <ExpandableIcons

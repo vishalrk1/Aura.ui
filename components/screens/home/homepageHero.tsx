@@ -21,7 +21,7 @@ const HomepageHero = () => {
           className="absolute scale-120 opacity-30"
         />
       </div>
-      <div className="absolute inset-0 mt-[60px] w-full bg-gradient-to-t from-black via-transparent to-black px-12 md:mt-0">
+      <div className="absolute inset-0 mt-[100px] w-full bg-gradient-to-t from-black via-transparent to-black px-12 md:mt-0">
         <div className="mx-auto flex h-full flex-col items-center justify-center">
           <FadeIn.Item>
             <h1 className="text-center font-bold text-2xl leading-[1.5] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
@@ -39,7 +39,7 @@ const HomepageHero = () => {
             </h2>
           </FadeIn.Item>
           <FadeIn.Item>
-            <div className="mt-4 flex w-full flex-col items-center justify-center gap-6 sm:flex-row">
+            <div className="mt-4 flex w-full items-center justify-center gap-6 flex-row">
               <Link href="/component">
                 <HoverButton
                   buttonText="Components"

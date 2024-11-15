@@ -66,7 +66,7 @@ const Navbar = () => {
   return (
     <motion.nav
       initial={false}
-      className="fixed top-0 z-50 w-full bg-transparent bg-white bg-opacity-40 py-2 backdrop-blur-sm"
+      className="fixed top-0 z-50 w-full bg-black-a6 bg-opacity-100 py-2 backdrop-blur-sm"
     >
       <div className="flex h-[40px] items-center justify-between px-6 pl-12 md:h-[60px] md:px-32">
         <a
