@@ -1,0 +1,251 @@
+---
+title: "Progress Card"
+author: 
+  name: "Vishal Karangale"
+  link: "https://x.com/KarangaleVishal"
+  handle: "KarangaleVishal"
+time:
+  created: "2024-11-9T19:24:46.167Z"
+  updated: "2024-11-9T09:56:06.853Z"
+tags: ["tailwindCss", "framer motion"]
+---
+
+<Preview 
+  component={<ProgressCardExample />}
+  code={{
+  title: "ExapndableCard",
+  language: "tsx",
+  content: `
+"use client";
+
+import type { ReactNode } from "react";
+
+import { motion } from "framer-motion";
+
+import ProgressCard from ".";
+import NormalButton from "../../Button/NormalButton";
+import { Check } from "lucide-react";
+
+export function ProgressCardExample() {
+  const steps: ReactNode[] = [
+    <div key="1" className="flex flex-col gap-1 p-6">
+      <h1>Forge Your Gaming Legend</h1>
+      <p className="mt-3 rounded-lg border border-[#F1F1F1] border-dashed bg-[#FAFAFA] p-3 text-[#525252] text-sm dark:border-[#222222] dark:bg-[#171717] dark:text-[#d4d4d4]">
+        With your ambitions in sight, we’re ready to craft a personalized gaming
+        strategy. Our advanced system adapts to your playstyle and pace to help
+        you achieve your goals.
+      </p>
+      <div className="my-2 flex items-center justify-between rounded-xl bg-gradient-to-r from-[#9ae1ff] to-[#c8f4db] px-4 py-3">
+        <p className="m-0 font-bold text-grayBg">Your Unique Gaming Strategy</p>
+        <p className="m-0 font-bold text-grayBg">85% Match</p>
+      </div>
+      <h2 className="m-0 w-full p-0 font-semibold">
+        This plan includes tailored challenges, immersive quests, and skill
+        building missions to ensure you level up with confidence and precision.
+      </h2>
+    </div>,
+    <div key="2" className="flex flex-col gap-1 p-6">
+      <h1>Level Up Your Game</h1>
+      <p className="mt-3 rounded-lg border border-[#F1F1F1] border-dashed bg-[#FAFAFA] p-3 text-[#525252] text-sm dark:border-[#222222] dark:bg-[#171717] dark:text-[#d4d4d4]">
+        Great adventures start with small victories. Let’s break your gaming
+        journey into achievable levels and milestones to keep you motivated and
+        progressing.
+      </p>
+      <div className="my-2 flex flex-col gap-2">
+        <div className="flex w-full items-center justify-between">
+          <p className="m-0 font-semibold">Conquer the First Quest</p>
+          <p className="m-0 text-sm text-green-600">Quick Achievement!</p>
+        </div>
+        <div className="h-2 w-full rounded-full bg-grayBorder">
+          <motion.div
+            layout
+            initial={{ scaleX: 0, originX: 0 }}
+            animate={{ scaleX: 1, originX: 0 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+            className="h-full rounded-full bg-green-500"
+            style={{ width: "35%" }}
+          />
+        </div>
+        <h2 className="mt-2 font-light">
+          Every mission completed is a step closer to mastery. Celebrate every
+          win, big or small, as you continue your path to gaming greatness!
+        </h2>
+      </div>
+    </div>,
+    <div key="3" className="flex flex-col p-6">
+      <div className="flex w-full items-center justify-between">
+        <h1>Unlock Your Payment Potential</h1>
+        <NormalButton className="w-max rounded-lg px-3 py-2 font-normal text-sm">Show Detail</NormalButton>
+      </div>
+      <p className="mt-3 rounded-lg border border-[#F1F1F1] border-dashed bg-[#FAFAFA] p-3 text-[#525252] text-sm dark:border-[#222222] dark:bg-green-600/20 dark:text-white-a12">
+        Great adventures start with small victories. Let’s break your gaming
+        journey into achievable levels and milestones to keep you motivated and
+        progressing.
+      </p>
+      <div className="flex flex-col gap-2 items-start mt-4">
+        <div className="flex items-center gap-2">
+          <Check size={20} className="text-green-500"/>
+          <h2 className="m-0 p-0">Flexible Payment Options – Choose what suits you.</h2>
+        </div>
+        <div className="flex items-center gap-2">
+          <Check size={20} className="text-green-500"/>
+          <h2 className="m-0 p-0">Real-Time Tracking – Stay updated instantly.</h2>
+        </div>
+        <div className="flex items-center gap-2">
+          <Check size={20} className="text-green-500"/>
+          <h2 className="m-0 p-0">Reward Opportunities – Earn while paying.</h2>
+        </div>
+      </div>
+      <button type="button" className="py-2 w-full rounded-xl mt-4 bg-green-700/80 hover:bg-green-600 transition-all duration-100">
+        Start Playing
+      </button>
+    </div>,
+  ];
+
+  return <ProgressCard steps={steps} />;
+}
+
+  `,
+}}
+/>
+
+# Component Props
+<div style={{marginTop: "4px"}}/>
+## Expandable Card Wrapper
+<PropsTable data={[
+  {
+    name: "steps",
+    type: "ReactNode[]"
+  },
+]}/>
+
+# Base Component
+
+> Copy and paste the following base component in your project\
+> Make sure to install all the required dependencies
+
+```tsx title="HoverButton.tsx" showLineNumbers=true
+"use client";
+
+import type { Variants } from "framer-motion";
+import type React from "react";
+import type { ReactNode } from "react";
+
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
+import { twMerge } from "tailwind-merge";
+
+import { SegmentedLoader } from "../../Other/Progress";
+
+interface ProgressCardProps {
+  steps: ReactNode[];
+}
+
+const slideVariants: Variants = {
+  enter: (direction: number) => ({
+    x: direction > 0 ? 300 : -300,
+    opacity: 0,
+  }),
+  center: {
+    zIndex: 1,
+    x: 0,
+    opacity: 1,
+  },
+  exit: (direction: number) => ({
+    zIndex: 0,
+    x: direction < 0 ? 300 : -300,
+    opacity: 0,
+  }),
+};
+
+const ProgressCard: React.FC<ProgressCardProps> = ({ steps }) => {
+  const [currentStep, setCurrentStep] = useState<number>(0);
+  const [direction, setDirection] = useState<number>(0);
+
+  const handleNext = (): void => {
+    if (currentStep < steps.length - 1) {
+      setDirection(1);
+      setCurrentStep((prev) => prev + 1);
+    }
+  };
+
+  const handlePrevious = (): void => {
+    if (currentStep > 0) {
+      setDirection(-1);
+      setCurrentStep((prev) => prev - 1);
+    }
+  };
+
+  return (
+    <motion.div 
+      layout
+      transition={{ duration: 0.3, ease: "easeInOut" }}
+      className="mx-auto w-full max-w-lg rounded-xl bg-[#111111] shadow-lg flex flex-col overflow-hidden"
+    >
+      <div className="p-4">
+        <SegmentedLoader
+          currentStep={currentStep}
+          totalSteps={steps.length}
+          height="h-2"
+        />
+      </div>
+      <motion.div 
+        layout 
+        className="relative overflow-hidden"
+      >
+        <AnimatePresence initial={false} custom={direction} mode="popLayout">
+          <motion.div
+            layout
+            key={currentStep}
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{
+              layout: {
+                duration: 0.3,
+                ease: "easeInOut"
+              },
+              x: { type: "spring", stiffness: 300, damping: 30, duration: 0.1 },
+              opacity: { duration: 0.1 },
+            }}
+            className="w-full top-0 left-0"
+          >
+            {steps[currentStep]}
+          </motion.div>
+        </AnimatePresence>
+      </motion.div>
+      <motion.div 
+        layout
+        className="flex justify-between border-[#222222] border-t-2 bg-[#0f0f0f] p-4"
+      >
+        <button
+          type="button"
+          onClick={handlePrevious}
+          disabled={currentStep === 0}
+          className={twMerge(
+            `relative w-max rounded-xl border-0 px-4 py-3 text-sm z-0 flex items-center justify-center gap-2 overflow-hidden bg-[#191e1f] border-[#292d2e] font-semibold capitalize text-white-a12 transition-transform duration-300
+            disabled:opacity-50 disabled:cursor-not-allowed hover:scale-105 active:scale-95`,
+          )}
+        >
+          Previous
+        </button>
+        <button
+          type="button"
+          onClick={handleNext}
+          disabled={currentStep === steps.length - 1}
+          className={twMerge(
+            `relative w-max rounded-xl border-0 px-4 py-3 text-sm z-0 flex items-center justify-center gap-2 overflow-hidden bg-[#191e1f] border-[#292d2e] font-semibold capitalize text-white-a12 transition-transform duration-300
+            disabled:opacity-50 disabled:cursor-not-allowed hover:scale-105 active:scale-95`,
+          )}
+        >
+          Next
+        </button>
+      </motion.div>
+    </motion.div>
+  );
+};
+
+export default ProgressCard;
+```

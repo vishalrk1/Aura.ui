@@ -1,0 +1,113 @@
+---
+title: "Numerical Step Progress"
+author: 
+  name: "Vishal Karangale"
+  link: "https://x.com/KarangaleVishal"
+  handle: "KarangaleVishal"
+time:
+  created: "2024-11-14T19:24:46.167Z"
+  updated: "2024-11-14T09:56:06.853Z"
+tag: ["framer motion", "tailwind css"]
+---
+
+<Preview 
+  component={<AutoStepProgressExample />}
+  code={{
+  title: "Numerical Step Progress",
+  language: "tsx",
+  content: `
+import { useEffect, useState } from "react";
+import { StepLoader } from ".";
+
+export const AutoStepProgressExample: React.FC = () => {
+    const [currentStep, setCurrentStep] = useState(0);
+    const totalSteps = 5;
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+        setCurrentStep((prevStep) => {
+            if (prevStep === totalSteps - 1) {
+                return 0;
+            }
+            return prevStep + 1;
+        });
+        }, 2000);
+        return () => clearInterval(timer);
+    }, []);
+
+    return (
+        <div className="w-full max-w-4xl">
+            <StepLoader currentStep={currentStep} totalSteps={totalSteps} />
+            <div className="mt-4 text-center">
+                Current Step: {currentStep + 1} of {totalSteps}
+            </div>
+        </div>
+    );
+};
+  `,
+}}
+/>
+
+# Component Props
+
+<PropsTable data={[
+  {
+    name: "currentStep",
+    type: "number"
+  },
+  {
+    name: "totalSteps",
+    type: "number"
+  },
+  {
+    name: "className",
+    type: "string"
+  },
+]}/>
+
+# Base Component
+
+> Copy and paste the following base component in your project\
+> Make sure to install all the required dependencies
+
+```tsx title="basic.tsx" showLineNumbers=true
+interface StepLoaderProps {
+  currentStep: number;
+  totalSteps: number;
+  className?: string;
+}
+
+export function StepLoader({
+  currentStep,
+  totalSteps,
+  className = "",
+}: StepLoaderProps) {
+  const steps = Array.from({ length: totalSteps }, (_, i) => i);
+
+  return (
+    <div className={`p-4 ${className}`}>
+      <div className="relative">
+        <div className="-translate-y-1/2 absolute top-1/2 left-0 h-0.5 w-full bg-white" />
+        <div
+          className="-translate-y-1/2 absolute top-1/2 left-0 h-0.5 bg-white-a4 transition-all duration-300"
+          style={{ width: `${(currentStep / (totalSteps - 1)) * 100}%` }}
+        />
+        <div className="relative flex justify-between">
+          {steps.map((index) => (
+            <div
+              key={index}
+              className={`flex h-8 w-8 items-center justify-center rounded-full ${
+                index <= currentStep
+                  ? "bg-gray-800 text-white"
+                  : "bg-gray-100 text-black-a11"
+              }transition-colors duration-300`}
+            >
+              {index + 1}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+```

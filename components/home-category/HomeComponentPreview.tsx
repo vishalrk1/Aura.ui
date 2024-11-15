@@ -4,24 +4,17 @@ import type { Language } from "prism-react-renderer";
 import type React from "react";
 
 import GradientText from "@/components/displayComponents/Text/GradientText/GradientText";
+import { HOME_DEFAULT_CODE } from "@/types/defaultCode";
 
 import { AnimatePresence, motion } from "framer-motion";
-import {
-  Check,
-  ChevronDown,
-  ChevronUp,
-  Copy,
-  Home,
-  Mail,
-  Trash,
-  User,
-} from "lucide-react";
+import { Check, ChevronDown, ChevronUp, Copy } from "lucide-react";
 import { useTheme } from "next-themes";
+import { useRouter } from "next/navigation";
 import { Highlight, themes } from "prism-react-renderer";
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
 
-import ExpandableIcons from "../displayComponents/Other/ExpandableIcons";
+import { ProgressCardExample } from "../displayComponents/Cards/Progress Card/example";
 
 interface GetStartedPreviewProps {
   initialTab?: "code" | "component";
@@ -53,37 +46,13 @@ const TabButton: React.FC<TabButtonProps> = ({
   </button>
 );
 
-const DEFAULT_CODE = `
-<ExpandableIcons
-  isOpen={isOpen}
-  setIsOpen={setIsOpen}
-  icons={[
-    {
-      name: "Home",
-      icon: <Home className="text-grayBg"/>,
-    },
-    {
-      name: "Mail",
-      icon: <Mail className="text-grayBg"/>,
-    },
-    {
-      name: "Profile",
-      icon: <User className="text-grayBg"/>,
-    },
-    {
-      name: "Profile",
-      icon: <Trash className="text-red-400"/>,
-    }
-  ]}
-/>
-`;
-
 const GetStartedPreview: React.FC<GetStartedPreviewProps> = ({
   initialTab = "component",
-  sampleCode = DEFAULT_CODE,
+  sampleCode = HOME_DEFAULT_CODE,
   language = "tsx",
   className = "",
 }) => {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [activeTab, setActiveTab] = useState<"code" | "component">(initialTab);
   const [copied, setCopied] = useState<boolean>(false);
@@ -101,7 +70,11 @@ const GetStartedPreview: React.FC<GetStartedPreviewProps> = ({
   };
 
   const toggleExpand = () => {
-    setIsExpanded(!isExpanded);
+    if (!isExpanded) {
+      router.push("/component/progress-card");
+    } else {
+      setIsExpanded(!isExpanded);
+    }
   };
 
   const CodeButton: React.FC<{ expanded: boolean; onClick: () => void }> = ({
@@ -156,29 +129,8 @@ const GetStartedPreview: React.FC<GetStartedPreviewProps> = ({
 
         <div className="sm:min-h-[400px] w-[80%] sm:w-full rounded-lg border-2 border-grayBorder px-6 py-2">
           {activeTab === "component" ? (
-            <div className="flex min-h-[400px] items-center justify-center">
-              <ExpandableIcons
-                isOpen={isOpen}
-                setIsOpen={setIsOpen}
-                icons={[
-                  {
-                    name: "Home",
-                    icon: <Home className="text-grayBg" />,
-                  },
-                  {
-                    name: "Mail",
-                    icon: <Mail className="text-grayBg" />,
-                  },
-                  {
-                    name: "Profile",
-                    icon: <User className="text-grayBg" />,
-                  },
-                  {
-                    name: "Profile",
-                    icon: <Trash className="text-red-400" />,
-                  },
-                ]}
-              />
+            <div className="flex min-h-[500px] items-center justify-center">
+              <ProgressCardExample />
             </div>
           ) : (
             <div className="relative h-full w-full">
