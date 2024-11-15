@@ -10,7 +10,7 @@ const Spacer = () => <div style={{ marginTop: "24px" }} />;
 
 const HomepageHero = () => {
   return (
-    <div className="relative flex h-[50vh] w-full flex-col items-center justify-center overflow-hidden bg-transparent text-white md:h-[70vh]">
+    <div className="relative flex h-[50vh] w-full flex-col items-center justify-center overflow-hidden bg-transparent text-white md:h-[100vh]">
       <div className="absolute inset-0 overflow-hidden opacity-80">
         <Image
           src="/hero-image3.svg"
@@ -21,11 +21,11 @@ const HomepageHero = () => {
           className="absolute scale-120 opacity-30"
         />
       </div>
-      <div className="absolute inset-0 mt-[60px] w-full bg-gradient-to-t from-black via-transparent to-black px-12 md:mt-0">
+      <div className="absolute inset-0 mt-[100px] w-full bg-gradient-to-t from-black via-transparent to-black px-12 md:mt-0">
         <div className="mx-auto flex h-full flex-col items-center justify-center">
           <FadeIn.Item>
             <h1 className="text-center font-bold text-2xl leading-[1.5] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
-              Make your website looks
+              Make your website look
             </h1>
             <h1 className="mt-1 text-center font-bold text-2xl leading-[1.5] sm:text-4xl md:mt-2 md:text-5xl lg:text-6xl xl:text-7xl">
               100x <HomeFadeUpText /> with Aura
@@ -39,16 +39,16 @@ const HomepageHero = () => {
             </h2>
           </FadeIn.Item>
           <FadeIn.Item>
-            <div className="mt-4 flex w-full flex-col items-center justify-center gap-6 sm:flex-row">
+            <div className="mt-4 flex w-full items-center justify-center gap-6 flex-row">
               <Link href="/component">
                 <HoverButton
                   buttonText="Components"
                   expandText="Start Building"
-                  icon="😎"
+                  icon="🚀"
                 />
               </Link>
               <Link href="/">
-                <HoverFillButton>Browse template</HoverFillButton>
+                <HoverFillButton>Browse templates ✨</HoverFillButton>
               </Link>
             </div>
           </FadeIn.Item>
