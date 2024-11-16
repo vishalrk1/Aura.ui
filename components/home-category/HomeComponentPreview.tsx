@@ -4,6 +4,7 @@ import type { Language } from "prism-react-renderer";
 import type React from "react";
 
 import GradientText from "@/components/displayComponents/Text/GradientText/GradientText";
+import useIsMobile from "@/hooks/useIsMobile";
 import { HOME_DEFAULT_CODE } from "@/types/defaultCode";
 
 import { AnimatePresence, motion } from "framer-motion";
@@ -52,6 +53,9 @@ const GetStartedPreview: React.FC<GetStartedPreviewProps> = ({
   language = "tsx",
   className = "",
 }) => {
+  const isMobile = useIsMobile();
+  let linesToShow = isMobile ? 10 : 15;
+
   const router = useRouter();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [activeTab, setActiveTab] = useState<"code" | "component">(initialTab);
@@ -102,8 +106,13 @@ const GetStartedPreview: React.FC<GetStartedPreviewProps> = ({
     <div
       className={`flex w-full flex-col items-center justify-start py-12 ${className}`}
     >
-      <div className="bg-[#5edbe6] p-2 rounded-md text-sm md:text-lg">QUICK START</div>
-      <GradientText text="Get Started Today" className="text-3xl md:text-5xl mb-1" />
+      <div className="bg-[#5edbe6] p-2 rounded-md text-sm md:text-lg">
+        QUICK START
+      </div>
+      <GradientText
+        text="Get Started Today"
+        className="text-3xl md:text-5xl mb-1"
+      />
       <h2 className="hidden sm:block text-xs sm:text-base mb-4 w-[60%] text-center text-muted-foreground">
         We've crafted animations that are lightweight and optimized, so you can
         add beautiful effects without sacrificing speed. Copy components
@@ -161,7 +170,7 @@ const GetStartedPreview: React.FC<GetStartedPreviewProps> = ({
                   >
                     <pre className={`overflow-hidden rounded-lg ${className}`}>
                       {tokens
-                        .slice(0, isExpanded ? tokens.length : 15)
+                        .slice(0, isExpanded ? tokens.length : linesToShow)
                         .map((line, i) => (
                           <div
                             key={i}
