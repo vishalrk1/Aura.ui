@@ -160,13 +160,22 @@ const page = () => {
                     </h2>
                     <div className="flex gap-3 items-center">
                       <Link href={item.twitterURL} target="_blank">
-                        <img src="/twitter-x.svg" className="h-4 md:h-6 w-4 md:w-6" />
+                        <img
+                          src="/twitter-x.svg"
+                          className="h-4 md:h-6 w-4 md:w-6"
+                        />
                       </Link>
                       <Link href={item.linkedinURL} target="_blank">
-                        <img src="/linkedin.svg" className="h-4 md:h-6 w-4 md:w-6" />
+                        <img
+                          src="/linkedin.svg"
+                          className="h-4 md:h-6 w-4 md:w-6"
+                        />
                       </Link>
                       <Link href={item.githubURL} target="_blank">
-                        <img src="/github.svg" className="h-4 md:h-6 w-4 md:w-6" />
+                        <img
+                          src="/github.svg"
+                          className="h-4 md:h-6 w-4 md:w-6"
+                        />
                       </Link>
                       ~
                       <Link href={item.portfolioURL} target="_blank">
@@ -222,7 +231,9 @@ const page = () => {
               placeholder="Type your message"
             ></textarea>
             <div className="flex w-full justify-end items-center">
-              <HoverFillButton className="rounded-lg w-20">Submit</HoverFillButton>
+              <HoverFillButton className="rounded-lg w-20">
+                Submit
+              </HoverFillButton>
             </div>
           </form>
         </section>

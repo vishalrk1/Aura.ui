@@ -2,12 +2,11 @@ import type { ComponentArticle } from "@/types/component";
 
 import { ComponentNavigation } from "@/components/component-navigation";
 import * as FadeIn from "@/components/motion/staggers/fade";
-import { TableOfContents } from "@/components/on-this-page";
+// import { TableOfContents } from "@/components/on-this-page";
 import { formatter } from "@/lib/formatter";
 import { getComponentArticles } from "@/lib/mdx";
 import { MDX } from "@/mdx-components";
 
-import { Dot } from "lucide-react";
 import React from "react";
 
 interface Props {
@@ -77,7 +76,7 @@ export const ArticleLayout = ({ article }: Props) => {
           </FadeIn.Item>
         </div>
         <ComponentNavigation components={compArticles} />
-        <TableOfContents />
+        {/* <TableOfContents /> */}
       </FadeIn.Container>
     </React.Fragment>
   );

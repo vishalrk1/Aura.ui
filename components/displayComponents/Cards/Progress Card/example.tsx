@@ -3,10 +3,10 @@
 import type { ReactNode } from "react";
 
 import { motion } from "framer-motion";
+import { Check } from "lucide-react";
 
 import ProgressCard from ".";
 import NormalButton from "../../Button/NormalButton";
-import { Check } from "lucide-react";
 
 export function ProgressCardExample() {
   const steps: ReactNode[] = [
@@ -57,7 +57,9 @@ export function ProgressCardExample() {
     <div key="3" className="flex flex-col p-6">
       <div className="flex w-full items-center justify-between">
         <h1>Unlock Your Payment Potential</h1>
-        <NormalButton className="w-max rounded-lg px-3 py-2 font-normal text-sm">Show Detail</NormalButton>
+        <NormalButton className="w-max rounded-lg px-3 py-2 font-normal text-sm">
+          Show Detail
+        </NormalButton>
       </div>
       <p className="mt-3 rounded-lg border border-[#F1F1F1] border-dashed bg-[#FAFAFA] p-3 text-[#525252] text-sm dark:border-[#222222] dark:bg-green-600/20 dark:text-white-a12">
         Great adventures start with small victories. Let’s break your gaming
@@ -66,19 +68,26 @@ export function ProgressCardExample() {
       </p>
       <div className="flex flex-col gap-2 items-start mt-4">
         <div className="flex items-center gap-2">
-          <Check size={20} className="text-green-500"/>
-          <h2 className="m-0 p-0">Flexible Payment Options – Choose what suits you.</h2>
+          <Check size={20} className="text-green-500" />
+          <h2 className="m-0 p-0">
+            Flexible Payment Options – Choose what suits you.
+          </h2>
         </div>
         <div className="flex items-center gap-2">
-          <Check size={20} className="text-green-500"/>
-          <h2 className="m-0 p-0">Real-Time Tracking – Stay updated instantly.</h2>
+          <Check size={20} className="text-green-500" />
+          <h2 className="m-0 p-0">
+            Real-Time Tracking – Stay updated instantly.
+          </h2>
         </div>
         <div className="flex items-center gap-2">
-          <Check size={20} className="text-green-500"/>
+          <Check size={20} className="text-green-500" />
           <h2 className="m-0 p-0">Reward Opportunities – Earn while paying.</h2>
         </div>
       </div>
-      <button type="button" className="py-2 w-full rounded-xl mt-4 bg-green-700/80 hover:bg-green-600 transition-all duration-100">
+      <button
+        type="button"
+        className="py-2 w-full rounded-xl mt-4 bg-green-700/80 hover:bg-green-600 transition-all duration-100"
+      >
         Start Playing
       </button>
     </div>,
