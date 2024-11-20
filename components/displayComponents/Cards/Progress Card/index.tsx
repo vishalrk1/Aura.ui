@@ -50,7 +50,7 @@ const ProgressCard: React.FC<ProgressCardProps> = ({ steps }) => {
   };
 
   return (
-    <motion.div 
+    <motion.div
       layout
       transition={{ duration: 0.3, ease: "easeInOut" }}
       className="mx-auto w-full max-w-lg rounded-xl bg-[#111111] shadow-lg flex flex-col overflow-hidden"
@@ -62,10 +62,7 @@ const ProgressCard: React.FC<ProgressCardProps> = ({ steps }) => {
           height="h-2"
         />
       </div>
-      <motion.div 
-        layout 
-        className="relative overflow-hidden"
-      >
+      <motion.div layout className="relative overflow-hidden">
         <AnimatePresence initial={false} custom={direction} mode="popLayout">
           <motion.div
             layout
@@ -78,7 +75,7 @@ const ProgressCard: React.FC<ProgressCardProps> = ({ steps }) => {
             transition={{
               layout: {
                 duration: 0.3,
-                ease: "easeInOut"
+                ease: "easeInOut",
               },
               x: { type: "spring", stiffness: 300, damping: 30, duration: 0.1 },
               opacity: { duration: 0.1 },
@@ -89,7 +86,7 @@ const ProgressCard: React.FC<ProgressCardProps> = ({ steps }) => {
           </motion.div>
         </AnimatePresence>
       </motion.div>
-      <motion.div 
+      <motion.div
         layout
         className="flex justify-between border-[#222222] border-t-2 bg-[#0f0f0f] p-4"
       >

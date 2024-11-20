@@ -1,4 +1,3 @@
-import type { Post } from "@/types";
 import type { ComponentArticle } from "@/types/component";
 
 import * as FadeIn from "@/components/motion/staggers/fade";
@@ -7,10 +6,6 @@ import { OpenGraph } from "@/lib/og";
 
 import Link from "next/link";
 import { twMerge } from "tailwind-merge";
-
-interface PageProps {
-  params: Post;
-}
 
 interface CategoryGroup {
   category: string;
@@ -51,7 +46,7 @@ function getChunks(array: CategoryGroup[], size = 3): CategoryGroup[][] {
   return chunks;
 }
 
-export function generateMetadata({ params }: PageProps) {
+export function generateMetadata() {
   const title = "Components";
   const image = `${process.env.NEXT_PUBLIC_SITE_URL}api/og?title=${encodeURIComponent(title)}`;
 
@@ -65,7 +60,7 @@ export function generateMetadata({ params }: PageProps) {
   };
 }
 
-export default function Page({ params }: PageProps) {
+export default function Page() {
   const articles = getComponentArticles();
   const categorizedArticles = organizeCategorizedArticles(articles);
   const chunks = getChunks(categorizedArticles);
